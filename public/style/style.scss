@@ -1,0 +1,244 @@
+// Unit function
+@function pixelToRem($size) {
+  @return $size / 16 * 1rem;
+}
+
+// color scheme
+$color-palette: (
+  primary: #ff4e53,
+  secondary: #2f2f2f,
+  tertiary: #c4c4c4,
+  neutral: #fff,
+  black: #000,
+  brand: #333333,
+);
+
+// Helpfull mixin
+@mixin box-sizing($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flexbox($main-axis: center, $minor-axis: center, $axis: row) {
+  display: flex;
+  justify-content: $main-axis;
+  align-items: $minor-axis;
+  flex-direction: $axis;
+}
+
+@mixin links($link, $action) {
+  $palette-passive: map-get($color-palette, $link);
+  $palette-action: map-get($color-palette, $action);
+  color: $palette-passive;
+  text-decoration: none;
+
+  &:hover {
+    color: $palette-action;
+    transition: all 0.3s ease;
+  }
+
+  &:active,
+  &:focus {
+    color: $palette-action;
+  }
+}
+
+// Media query breakpoint
+$breakpoints: (
+  laptop: 1000px,
+  tablet: 800px,
+  mobile: 600px,
+);
+
+//responsive design
+@mixin laptop-only {
+  @media screen and (max-width: map-get($breakpoints, laptop)) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media screen and (max-width: map-get($breakpoints, tablet)) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @media screen and (max-width: map-get($breakpoints, mobile)) {
+    @content;
+  }
+}
+
+//  Global reset
+* {
+  margin: pixelToRem(0);
+  padding: pixelToRem(0);
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+// Navbar
+.navbar {
+  @include flexbox(space-around, center);
+  @include box-sizing(100vw, 15vh);
+  background-color: map-get($color-palette, neutral);
+  position: fixed;
+  top: pixelToRem(0);
+}
+
+.navbar__logo {
+  width: 9vh;
+}
+
+.navbar__menu {
+  @include flexbox(space-around, center);
+  @include box-sizing(50vw, 15vh);
+  list-style: none;
+
+  @include laptop-only {
+    width: 70vw;
+  }
+
+  @include tablet-only {
+    @include flexbox(space-around, center, column);
+    position: absolute;
+    right: pixelToRem(0);
+    top: 15vh;
+    height: 85vh;
+    width: 60vw;
+    background-color: lighten(map-get($color-palette, brand), 75%);
+    opacity: 0;
+  }
+}
+
+// burgernav sliding animations
+.navbar__menu.burgerNavOpen {
+  transition: all 0.1s ease-in-out;
+  transform-origin: left;
+  opacity: 0.95;
+}
+
+.navbar__links {
+  @include links(black, primary);
+
+  &--buy {
+    @include links(neutral, primary);
+    font-size: 1.5rem;
+    padding: 1vw 2vw;
+    border: 0.2rem solid map-get($color-palette, primary);
+    background-color: map-get($color-palette, primary);
+
+    &:hover {
+      background-color: map-get($color-palette, neutral);
+      transition: all 0.3s ease;
+    }
+
+    &:active,
+    &:focus {
+      background-color: map-get($color-palette, neutral);
+    }
+  }
+}
+
+// navbar Link animation
+.navbar__links.burgerNavOpen {
+  opacity: 1;
+}
+
+.hamburger-btn {
+  display: none;
+
+  @include tablet-only {
+    display: block;
+    @include box-sizing(15vw, 7.5vh);
+    @include flexbox(center, center, column);
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.hamburger-line {
+  @include box-sizing(10vw, 1vh);
+  @include flexbox(center, center, column);
+  background-color: map-get($color-palette, brand);
+  border-radius: pixelToRem(5);
+  margin: 1vh;
+  transition: all 0.2s ease-in-out;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    @include box-sizing(10vw, 1vh);
+    @include flexbox(space-around, center, column);
+    background-color: map-get($color-palette, brand);
+    border-radius: pixelToRem(5);
+    margin: 1vh;
+  }
+
+  &::before {
+    transform: translateY(pixelToRem(-16));
+  }
+
+  &::after {
+    transform: translateY(pixelToRem(16));
+  }
+}
+
+// burger menu Animation
+.hamburger-btn.burgerNavOpen .hamburger-line {
+  background: transparent;
+}
+
+.hamburger-btn.burgerNavOpen .hamburger-line::before {
+  transform: rotate(45deg);
+}
+
+.hamburger-btn.burgerNavOpen .hamburger-line::after {
+  transform: rotate(-45deg);
+}
+
+// Landing-Page
+.landing-page {
+  @include box-sizing(100vw, 85vh);
+  @include flexbox(space-around);
+  margin-top: 15vh;
+}
+
+.landing-page__pictures--left {
+  height: 70vh;
+
+  @include tablet-only {
+    display: none;
+  }
+}
+.landing-page__pictures--right {
+  height: 70vh;
+
+  @include tablet-only {
+    display: none;
+  }
+}
+
+.landing-page__center {
+  @include flexbox(space-around, center, column);
+  @include box-sizing(40vw, 70vh);
+
+  @include tablet-only {
+    width: 70vw;
+  }
+}
+
+.landing-page__brand--logo {
+  max-width: 30vw;
+}
+
+.landing-page__advertising {
+  text-align: center;
+
+  &--highlight {
+    font-weight: bold;
+  }
+}
+
+// 4 commercials

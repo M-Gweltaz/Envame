@@ -32,5 +32,5 @@ app.listen(
 // Setting Routes
 
 // Homepage
-const homePagePath = require('./routes/homepage.js');
-app.use('/', homePagePath);
+const homepagePath = require('./routes/homepage.js');
+app.use('/', homepagePath);
