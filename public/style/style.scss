@@ -13,6 +13,14 @@ $color-palette: (
   brand: #333333,
 );
 
+// font size
+$font-size: (
+  title: 2rem,
+  buy-Btn: 1.5rem,
+  highlight: 1.3rem,
+  small: 0.8rem,
+);
+
 // Helpfull mixin
 @mixin box-sizing($width, $height: $width) {
   width: $width;
@@ -40,6 +48,32 @@ $color-palette: (
   &:active,
   &:focus {
     color: $palette-action;
+  }
+}
+
+@mixin button($background, $color) {
+  $bg: map-get($color-palette, $background);
+  $text: map-get($color-palette, $color);
+  cursor: pointer;
+  background-color: $bg;
+  color: $text;
+  border-radius: pixelToRem(50);
+  box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2)
+    map-get($color-palette, black);
+  font-size: map-get($font-size, buy-Btn);
+  padding: 1vw 2vw;
+  border: 0.2rem solid $bg;
+
+  &:hover {
+    background-color: $text;
+    border-color: $bg;
+    color: $bg;
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    border-color: darken($bg, 15%);
+    color: darken($bg, 15%);
   }
 }
 
@@ -75,6 +109,7 @@ $breakpoints: (
   padding: pixelToRem(0);
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  max-width: 100vw;
 }
 
 // Navbar
@@ -84,6 +119,7 @@ $breakpoints: (
   background-color: map-get($color-palette, neutral);
   position: fixed;
   top: pixelToRem(0);
+  z-index: 1;
 }
 
 .navbar__logo {
@@ -122,19 +158,26 @@ $breakpoints: (
   @include links(black, primary);
 
   &--buy {
-    @include links(neutral, primary);
-    font-size: 1.5rem;
+    // @include links(neutral, primary);
+    font-size: map-get($font-size, buy-Btn);
     padding: 1vw 2vw;
     border: 0.2rem solid map-get($color-palette, primary);
     background-color: map-get($color-palette, primary);
+    color: map-get($color-palette, neutral);
+    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2)
+      map-get($color-palette, black);
 
     &:hover {
       background-color: map-get($color-palette, neutral);
+      color: map-get($color-palette, primary);
       transition: all 0.3s ease;
     }
 
     &:active,
     &:focus {
+      // background-color: map-get($color-palette, neutral);
+      border-color: darken(map-get($color-palette, primary), 15%);
+      color: darken(map-get($color-palette, primary), 15%);
       background-color: map-get($color-palette, neutral);
     }
   }
@@ -201,7 +244,8 @@ $breakpoints: (
 // Landing-Page
 .landing-page {
   @include box-sizing(100vw, 85vh);
-  @include flexbox(space-around);
+  max-width: 100%;
+  @include flexbox(space-around, center);
   margin-top: 15vh;
 }
 
@@ -222,7 +266,7 @@ $breakpoints: (
 
 .landing-page__center {
   @include flexbox(space-around, center, column);
-  @include box-sizing(40vw, 70vh);
+  @include box-sizing(40vw, 50vh);
 
   @include tablet-only {
     width: 70vw;
@@ -242,3 +286,437 @@ $breakpoints: (
 }
 
 // 4 commercials
+.fourcomercials {
+  @include flexbox(space-around, center, column);
+  @include box-sizing(80vw, 40vh);
+  margin: auto;
+
+  &__1 {
+    transform: translateX(-20vw);
+
+    @include tablet-only {
+      transform: translateX(0);
+    }
+  }
+
+  &__2 {
+    transform: translateX(10vw);
+
+    @include tablet-only {
+      transform: translateX(0);
+    }
+  }
+
+  &__3 {
+    transform: translateX(-10vw);
+
+    @include tablet-only {
+      transform: translateX(0);
+    }
+  }
+
+  &__4 {
+    transform: translateX(20vw);
+
+    @include tablet-only {
+      transform: translateX(0);
+    }
+  }
+}
+
+// Title bg pink text white
+.title-bg-pink {
+  @include box-sizing(100vw, 10vh);
+  max-width: 100%;
+  @include flexbox();
+  background-color: map-get($color-palette, primary);
+  margin-top: 5vh;
+}
+
+.title-white {
+  color: map-get($color-palette, neutral);
+  font-size: map-get($font-size, title);
+  text-align: center;
+}
+
+// Envam Beauty mask content
+.mask-presentation {
+  @include flexbox(space-around, center, column);
+  background-color: map-get($color-palette, primary);
+  color: map-get($color-palette, neutral);
+
+  &__clip {
+    max-height: 50vh;
+    max-width: 80vw;
+    margin: 5vh 0;
+    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
+      map-get($color-palette, black);
+  }
+
+  &__text {
+    max-width: 70vw;
+    margin: auto;
+    margin-bottom: 5vh;
+    line-height: 1.5rem;
+
+    &--highlight {
+      font-weight: bold;
+    }
+  }
+}
+
+// Title bg white text pink
+.title-bg-white {
+  @include box-sizing(100vw, 10vh);
+  max-width: 100%;
+  @include flexbox();
+  background-color: map-get($color-palette, neutral);
+  margin-top: 5vh;
+}
+
+.title-pink {
+  color: map-get($color-palette, primary);
+  font-size: map-get($font-size, title);
+  text-align: center;
+}
+
+// 3 effects content
+.red-light {
+  @include flexbox(space-around, center);
+  padding: 5vh;
+
+  @include tablet-only {
+    flex-direction: column;
+  }
+  &__picture {
+    max-width: 40vw;
+    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
+      map-get($color-palette, black);
+
+    @include tablet-only {
+      max-width: 80vw;
+    }
+  }
+
+  &__coment {
+    max-width: 40vw;
+
+    @include tablet-only {
+      max-width: 80vw;
+    }
+  }
+
+  &__title {
+    font-size: map-get($font-size, buy-Btn);
+    text-align: center;
+    padding: 1vh;
+
+    &--color {
+      font-size: map-get($font-size, highlight);
+      text-align: center;
+      padding: 1vh;
+    }
+  }
+}
+
+.orange-light {
+  @include flexbox(space-around, center);
+  background-color: map-get($color-palette, primary);
+  color: map-get($color-palette, neutral);
+  padding: 5vh;
+
+  @include tablet-only {
+    flex-direction: column-reverse;
+  }
+  &__picture {
+    max-width: 40vw;
+    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
+      map-get($color-palette, black);
+
+    @include tablet-only {
+      max-width: 80vw;
+    }
+  }
+
+  &__coment {
+    max-width: 40vw;
+
+    @include tablet-only {
+      max-width: 80vw;
+    }
+  }
+
+  &__title {
+    font-size: map-get($font-size, buy-Btn);
+    text-align: center;
+    padding: 1vh;
+
+    &--color {
+      font-size: map-get($font-size, highlight);
+      text-align: center;
+      padding: 1vh;
+    }
+  }
+}
+
+.blue-light {
+  @include flexbox(space-around, center);
+  margin: 5vh;
+
+  @include tablet-only {
+    flex-direction: column;
+  }
+  &__picture {
+    max-width: 40vw;
+    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
+      map-get($color-palette, black);
+
+    @include tablet-only {
+      max-width: 80vw;
+    }
+  }
+
+  &__coment {
+    max-width: 40vw;
+
+    @include tablet-only {
+      max-width: 80vw;
+    }
+  }
+
+  &__title {
+    font-size: map-get($font-size, buy-Btn);
+    text-align: center;
+    padding: 1vh;
+
+    &--color {
+      font-size: map-get($font-size, highlight);
+      text-align: center;
+      padding: 1vh;
+    }
+  }
+}
+
+// light effect clip
+.light-effect {
+  @include flexbox(space-around, center, column);
+
+  &__clip {
+    max-height: 50vh;
+    max-width: 80vw;
+    margin: 5vh 0;
+    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
+      map-get($color-palette, black);
+  }
+
+  &__text {
+    max-width: 70vw;
+    margin: auto;
+    margin-bottom: 5vh;
+    line-height: 1.5rem;
+
+    &--highlight {
+      font-weight: bold;
+    }
+  }
+}
+
+// Buying Add
+.buying-add {
+  @include flexbox(space-around, center, column);
+
+  &__text {
+    max-width: 70vw;
+    margin: auto;
+  }
+
+  &__Btn {
+    @include button(primary, neutral);
+    @include flexbox();
+    font-size: map-get($font-size, buy-Btn);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin: 5vh;
+  }
+}
+
+// User manual
+.user-manual {
+  background-color: map-get($color-palette, primary);
+  padding-top: 5vh;
+  color: map-get($color-palette, neutral);
+
+  &__steps {
+    @include flexbox(space-around, start);
+
+    @include tablet-only {
+      @include flexbox(space-around, center, column);
+    }
+  }
+
+  &__text {
+    @include box-sizing(70vw, 15vh);
+    margin: auto;
+    padding-top: 5vh;
+  }
+}
+
+.step {
+  @include flexbox(start, center, column);
+  @include box-sizing(20vw, 40vh);
+
+  @include tablet-only {
+    @include box-sizing(70vw, 40vh);
+  }
+
+  &__picture {
+    border-radius: 100%;
+    max-width: 20vw;
+
+    @include tablet-only {
+      max-width: 40vw;
+    }
+  }
+
+  &__text {
+    margin-top: 5vh;
+  }
+}
+
+// Selling point
+.selling__bg-picture {
+  background: url(../assets/pictures/selling-spot-background.png) no-repeat
+    center center;
+  @include flexbox(space-around);
+  margin-top: 5vh;
+
+  @include tablet-only {
+    flex-direction: column;
+  }
+}
+
+.selling-advantages {
+  @include flexbox(space-around, center, column);
+  @include box-sizing(30vw, 50vh);
+  margin: 5vh;
+  background-color: rgba(245, 198, 204, 0.39);
+  border-radius: pixelToRem(50);
+
+  @include tablet-only {
+    @include box-sizing(70vw, 45vh);
+  }
+
+  &__title {
+    font-size: map-get($font-size, highlight);
+  }
+
+  &__text {
+    text-transform: uppercase;
+    list-style-type: none;
+    padding: 2vh;
+
+    &:before {
+      content: '♥';
+      color: map-get($color-palette, primary);
+      padding-right: 1vw;
+    }
+  }
+}
+
+.selling-info {
+  @include flexbox(space-around, center, column);
+  @include box-sizing(30vw, 40vh);
+  text-align: center;
+
+  @include tablet-only {
+    @include box-sizing(70vw, 35vh);
+  }
+
+  &__current-price {
+    font-weight: bold;
+    font-size: map-get($font-size, highlight);
+  }
+
+  &__old-price {
+    margin: 1vh;
+
+    &--highlight {
+      text-decoration: line-through;
+    }
+  }
+
+  &__Btn {
+    @include button(primary, neutral);
+    @include flexbox();
+    font-size: map-get($font-size, buy-Btn);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin: 5vh;
+  }
+}
+
+.newsletter {
+  @include flexbox(space-around, center, column);
+  @include box-sizing(80vw, 50vh);
+  margin: auto;
+
+  &__form {
+    @include flexbox(space-around, center);
+    width: 100%;
+
+    @include tablet-only {
+      flex-direction: column;
+    }
+  }
+
+  &__email {
+    @include flexbox(start, start, column);
+
+    &--label {
+      font-size: map-get($font-size, small);
+      padding: 1vh 0;
+    }
+
+    &--input {
+      @include box-sizing(30vw, 7.5vh);
+      background-color: rgba(245, 198, 204, 0.39);
+      box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2);
+      border: none;
+      font-size: map-get($font-size, buy-Btn);
+
+      @include tablet-only {
+        @include box-sizing(70vw, 7.5vh);
+      }
+    }
+  }
+
+  &__btn {
+    @include button(primary, neutral);
+    @include flexbox();
+    font-size: map-get($font-size, buy-Btn);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 3vh;
+
+    @include tablet-only {
+      @include box-sizing(45vw, 7.5vh);
+    }
+  }
+
+  &__age {
+    @include flexbox(space-around);
+    font-size: map-get($font-size, small);
+
+    &--checkbox {
+      @include box-sizing(2vw, 2vh);
+      margin-right: 2.5vh;
+
+      @include tablet-only {
+        @include box-sizing(4vw, 4vh);
+      }
+    }
+  }
+}
