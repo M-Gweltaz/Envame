@@ -15,21 +15,25 @@ const responsivNavbar = () =>{
 //buying Btn  modal pop up 
 const buyModal = () => {
   const modalNavBtn = document.querySelector('.buyNavModal');
-  const modalBtn = document.querySelector('.buyModal');
-  const modalCloseBtn = document.querySelector('.modal__close');
+  const modalBtn = document.querySelectorAll('.buyModal');
+  const modalCloseBtn = document.querySelectorAll('.modal__close');
   const modal = document.querySelector('.modal__bg');
 
   modalNavBtn.addEventListener('click', () =>{
     modal.classList.toggle('modal__bg--active');
   });
 
-  modalBtn.addEventListener('click', () =>{
-    modal.classList.add('modal__bg--active');
+  modalBtn.forEach((btn) => {
+    btn.addEventListener('click', () =>{
+      modal.classList.add('modal__bg--active');
+    });
   });
 
-  modalCloseBtn.addEventListener('click', () => {
+  modalCloseBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
     modal.classList.remove('modal__bg--active');
-  })
+    });
+  });
 }
 
 // Invoc global function
