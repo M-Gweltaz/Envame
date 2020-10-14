@@ -1,5 +1,6 @@
 <!-- Header + Navbar -->
 <%- include('layouts/header'); -%>
+
 <!-- LandingPage -->
 <div class="landing-page">
   <div class="landing-page__pictures"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-left.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
@@ -13,10 +14,10 @@
 </div>
 
 <!-- 4 comercials -->
-<div class="fourcomercials">
+<div class="fourcomercials"  >
   <div data-aos="zoom-in-up"><p class="fourcomercials__1">Favorise le rajeunissement et l'éclat du visage</p></div>
   <div data-aos="zoom-in-up"><p class="fourcomercials__2">Lutte efficacement contre l'acnée</p></div>
-  <div data-aos="zoom-in-up"><p class="fourcomercials__3">Approuvé par les dermatologues</p></div>
+  <div data-aos="zoom-in-up"><p class="fourcomercials__3" id="mask-envame">Approuvé par les dermatologues</p></div> 
   <div data-aos="zoom-in-up"><p class="fourcomercials__4">Transformation garantie en seulement 15min / jours</p></div>
 </div>
 
@@ -26,7 +27,7 @@
 </div>
 <section class="mask-presentation">
   <video data-aos="zoom-in"data-aos-duration="1000" data-aos-easing="ease-in-out" class="mask-presentation__clip" src="./assets/videos/Visage-3D.mp4" poster="./assets/pictures/visage-3D-background.png" controls ></video>
-  <p class="mask-presentation__text">Le traitement LED ENVAME basé sur la PHOTOMODULATION est un traitement anti-âge ULTRA PERFORMANT utilisé depuis plusieurs années par la NASA pour réparer la peau fragilisée des astronautes. Cette performance est désormais <span class="mask-presentation__text--highlight">accessible à tous</span>. <br>
+  <p class="mask-presentation__text">Le traitement LED ENVAME basé sur la PHOTOMODULATION est un traitement anti-âge ULTRA PERFORMANT utilisé depuis plusieurs années par la NASA pour réparer la peau fragilisée des astronautes. Cette performance est désormais <span class="mask-presentation__text--highlight" id="3-effects">accessible à tous</span>. <br>
   Avoir une peau parfaite n’est plus un rêve. </p>
 </section>
 
@@ -74,7 +75,7 @@
 <!-- Buying Add -->
 <div class="buying-add">
   <p class="buying-add__text">Vous aussi profitez d'une efficacité professionnelle à la maison dès maintenant en commandant votre masque dès maintenant !</p>
-  <div class="buying-add__Btn" >Acheter</div>
+  <div class="buying-add__Btn buyModal" >Acheter</div>
 </div>
 
 <!-- User manual -->
@@ -84,19 +85,19 @@
 <section class="user-manual">
   <div class="user-manual__steps">  
     <div class="step">
-      <img data-aos="flip-left" data-aos-duration="300" class="step__picture" src="./assets/pictures/mode-d'emploi-1.png" alt="première étape imagé">
+      <img data-aos="flip-left" data-aos-duration="300" class="step__picture" src="./assets/pictures/mode-d-emploi-1.png" alt="première étape imagé">
       <p class="step__text">1. Lavez et séchez votre visage</p>
     </div>
     <div class="step">
-      <img data-aos="flip-left" data-aos-duration="600" class="step__picture"src="./assets/pictures/mode-d'emploi-2.png" alt="deuxième étape imagé">
+      <img data-aos="flip-left" data-aos-duration="600" class="step__picture"src="./assets/pictures/mode-d-emploi-2.png" alt="deuxième étape imagé">
       <p class="step__text">2. Connectez le masque et choisissez votre soin</p>
     </div>
     <div class="step">
-      <img data-aos="flip-left" data-aos-duration="900" class="step__picture" src="./assets/pictures/mode-d'emploi-3.png" alt="troisième étape imagé">
+      <img data-aos="flip-left" data-aos-duration="900" class="step__picture" src="./assets/pictures/mode-d-emploi-3.png" alt="troisième étape imagé">
       <p class="step__text">3. Détendez-vous pendant 15 minutes</p>
     </div>
     <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1200" class="step__picture" src="./assets/pictures/mode-d'emploi-4.png" alt="dernière étape imagé">
+      <img data-aos="flip-left" data-aos-duration="1200" class="step__picture" src="./assets/pictures/mode-d-emploi-4.png" alt="dernière étape imagé">
       <p class="step__text">4. Profitez du résultat</p>
   </div>
   </div>
@@ -122,7 +123,7 @@
     <li class="selling-advantages__text">Un seul achat suffit</li>
     <li class="selling-advantages__text">Une efficacité immédiate</li>
     <li class="selling-advantages__text">Des résultats comparables a une intervention professionnelle</li>
-    <li class="selling-advantages__text">Traitement indolore et sans effet secondaire</li>
+    <li class="selling-advantages__text" >Traitement indolore et sans effet secondaire</li>
   </ul>
  </div>
   <div class="selling-info">
@@ -130,12 +131,12 @@
       <p class="selling-info__current-price">Prix de lancement: 149€</p>
       <p class="selling-info__old-price">Prix d'origine: <span class="selling-info__old-price--highlight">189€</span></p> 
     </div>
-    <div class="selling-info__Btn" >Acheter</div>
+    <div class="selling-info__Btn buyModal">Acheter</div>
   </div>
 </div>
 
 <!-- Newsletter -->
-<div class="title-bg-white">
+<div class="title-bg-white" id="contact">
   <h2 class="title-pink">Suivez-nous</h2>
 </div>
 <form class="newsletter" action="newsletter"
@@ -146,14 +147,24 @@ method="post">
       <label class="newsletter__email--label"for="email"> Entrez votre Email:</label>
       <input class="newsletter__email--input" type="email" id="email" data-length="50" maxlength="50" required>
     </div>
-    <input class="newsletter__btn" type="submit" value="Je m'inscrit">
+    <input class="newsletter__btn" type="submit" value="Je m'inscris">
   </div>
   <div class="newsletter__age">
     <input class="newsletter__age--checkbox" type="checkbox" id="authorised" name="authorised" value="authorised" required
     checked>
-    <label class="newsletter__age--text" for="authorised">Je déclare être agé de 16 ou plus et accepter de recevoir des offres commerciales et personalisé de la société ENVAME</label>
+    <label class="newsletter__age--text" for="authorised">Je déclare être agé de 16 ans ou plus et accepter de recevoir des offres commerciales et personalisé de la société ENVAME</label>
   </div>
 </form>
+
+<!-- buying modal -->
+<div class="modal__bg">
+  <div class="modal">
+    <span class="modal__close">X</span>
+    <h3 class="modal__title">Payement en ligne bientôt disponible</h3>
+    <p class="modal__text">En attendant l'ajout de cette fonctionnalité vous pouvez d'ors et déjà commander votre masque Envame en nous contactant via email à :</p>
+    <p class="modal__text--highlight">contact@envame.com</p>
+  </div>
+</div>
 
 
 <!-- Footer -->

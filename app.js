@@ -34,3 +34,8 @@ app.listen(
 // Homepage
 const homepagePath = require('./routes/homepage.js');
 app.use('/', homepagePath);
+
+
+// further-information
+const infosPath = require('./routes/information.js');
+app.use('/information', infosPath);

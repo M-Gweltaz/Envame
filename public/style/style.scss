@@ -18,6 +18,7 @@ $font-size: (
   title: 2rem,
   buy-Btn: 1.5rem,
   highlight: 1.3rem,
+  main: 1.1rem,
   small: 0.8rem,
 );
 
@@ -109,6 +110,8 @@ $breakpoints: (
   padding: pixelToRem(0);
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  font-size: map-get($font-size, main);
+
   max-width: 100vw;
 }
 
@@ -144,6 +147,7 @@ $breakpoints: (
     width: 60vw;
     background-color: lighten(map-get($color-palette, brand), 75%);
     opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -152,6 +156,7 @@ $breakpoints: (
   transition: all 0.1s ease-in-out;
   transform-origin: left;
   opacity: 0.95;
+  visibility: visible;
 }
 
 .navbar__links {
@@ -160,6 +165,7 @@ $breakpoints: (
   &--buy {
     // @include links(neutral, primary);
     font-size: map-get($font-size, buy-Btn);
+    cursor: pointer;
     padding: 1vw 2vw;
     border: 0.2rem solid map-get($color-palette, primary);
     background-color: map-get($color-palette, primary);
@@ -279,6 +285,7 @@ $breakpoints: (
 
 .landing-page__advertising {
   text-align: center;
+  font-size: map-get($font-size, highlight);
 
   &--highlight {
     font-weight: bold;
@@ -289,6 +296,7 @@ $breakpoints: (
 .fourcomercials {
   @include flexbox(space-around, center, column);
   @include box-sizing(80vw, 40vh);
+  font-size: map-get($font-size, highlight);
   margin: auto;
 
   &__1 {
@@ -296,6 +304,7 @@ $breakpoints: (
 
     @include tablet-only {
       transform: translateX(0);
+      @include flexbox(space-around, start, column);
     }
   }
 
@@ -533,6 +542,7 @@ $breakpoints: (
   &__Btn {
     @include button(primary, neutral);
     @include flexbox();
+    cursor: pointer;
     font-size: map-get($font-size, buy-Btn);
     font-weight: bold;
     text-transform: uppercase;
@@ -544,7 +554,7 @@ $breakpoints: (
 // User manual
 .user-manual {
   background-color: map-get($color-palette, primary);
-  padding-top: 5vh;
+  padding: 5vh 0;
   color: map-get($color-palette, neutral);
 
   &__steps {
@@ -559,6 +569,10 @@ $breakpoints: (
     @include box-sizing(70vw, 15vh);
     margin: auto;
     padding-top: 5vh;
+
+    @include tablet-only {
+      height: 20vh;
+    }
   }
 }
 
@@ -570,6 +584,10 @@ $breakpoints: (
     @include box-sizing(70vw, 40vh);
   }
 
+  @include mobile-only {
+    @include box-sizing(70vw, 50vh);
+  }
+
   &__picture {
     border-radius: 100%;
     max-width: 20vw;
@@ -577,10 +595,18 @@ $breakpoints: (
     @include tablet-only {
       max-width: 40vw;
     }
+
+    @include mobile-only {
+      max-width: 60vw;
+    }
   }
 
   &__text {
     margin-top: 5vh;
+
+    @include mobile-only {
+      margin-bottom: 5vh;
+    }
   }
 }
 
@@ -604,7 +630,7 @@ $breakpoints: (
   border-radius: pixelToRem(50);
 
   @include tablet-only {
-    @include box-sizing(70vw, 45vh);
+    @include box-sizing(70vw, 60vh);
   }
 
   &__title {
@@ -662,12 +688,17 @@ $breakpoints: (
   @include box-sizing(80vw, 50vh);
   margin: auto;
 
+  @include tablet-only {
+    @include box-sizing(80vw, 70vh);
+  }
+
   &__form {
     @include flexbox(space-around, center);
     width: 100%;
 
     @include tablet-only {
       flex-direction: column;
+      margin: 2vh 0;
     }
   }
 
@@ -695,14 +726,12 @@ $breakpoints: (
   &__btn {
     @include button(primary, neutral);
     @include flexbox();
-    font-size: map-get($font-size, buy-Btn);
-    font-weight: bold;
+    font-size: map-get($font-size, highlight);
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
     margin-top: 3vh;
 
     @include tablet-only {
-      @include box-sizing(45vw, 7.5vh);
+      @include box-sizing(50vw, 7.5vh);
     }
   }
 
@@ -711,12 +740,158 @@ $breakpoints: (
     font-size: map-get($font-size, small);
 
     &--checkbox {
-      @include box-sizing(2vw, 2vh);
+      @include box-sizing(3vw, 3vh);
       margin-right: 2.5vh;
 
       @include tablet-only {
-        @include box-sizing(4vw, 4vh);
+        @include box-sizing(7.5vw, 7.5vh);
       }
+
+      @include mobile-only() {
+        @include box-sizing(15vw, 15vh);
+      }
+    }
+  }
+}
+
+.footer {
+  @include flexbox(space-around, start);
+  @include box-sizing(100vw, 30vh);
+  max-width: 100%;
+  background-color: map-get($color-palette, secondary);
+  box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2);
+
+  @include tablet-only {
+    flex-direction: column;
+    padding-top: 5vh;
+    height: 60vh;
+  }
+
+  &__title {
+    font-size: map-get($font-size, buy-Btn);
+    color: map-get($color-palette, neutral);
+    text-align: center;
+  }
+
+  &__assistance {
+    @include flexbox(start, center, column);
+    @include box-sizing(40vw, 20vh);
+    margin: auto;
+
+    @include tablet-only {
+      @include box-sizing(70vw, 30vh);
+    }
+  }
+
+  &__contact {
+    @include flexbox(start, center, column);
+    @include box-sizing(50vw, 20vh);
+    margin: auto;
+
+    @include tablet-only {
+      @include box-sizing(70vw, 30vh);
+    }
+
+    &--menu {
+      @include flexbox(space-around, start);
+      @include box-sizing(50vw, 20vh);
+    }
+  }
+
+  &__link {
+    @include links(tertiary, neutral);
+  }
+
+  &__info {
+    list-style-type: none;
+    color: map-get($color-palette, tertiary);
+    margin: 2vh;
+  }
+}
+
+// information  page
+.navspacing {
+  margin-top: 20vh;
+}
+
+.information {
+  @include box-sizing(70vw, 50vh);
+  @include flexbox(space-around, start, column);
+  padding: 5vh 0;
+  margin: auto;
+
+  @include tablet-only {
+    @include box-sizing(90vw, 70vh);
+  }
+
+  &__menu {
+    list-style-type: none;
+  }
+
+  &__item {
+    padding: 1vh;
+  }
+}
+
+// modal buying pop up
+.modal {
+  position: relative;
+  @include flexbox(start, center, column);
+  @include box-sizing(40vw, 40vh);
+  background-color: map-get($color-palette, neutral);
+  color: map-get($color-palette, primary);
+  box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2);
+  border-radius: pixelToRem(25);
+
+  @include laptop-only {
+    @include box-sizing(60vw, 40vh);
+  }
+
+  @include tablet-only {
+    @include box-sizing(80vw, 60vh);
+  }
+
+  &__bg {
+    @include flexbox();
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+
+    &--active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    cursor: pointer;
+    color: map-get($color-palette, neutral);
+    top: pixelToRem(10);
+    right: pixelToRem(10);
+    font-weight: bold;
+  }
+
+  &__title {
+    background-color: map-get($color-palette, primary);
+    color: map-get($color-palette, neutral);
+    width: 100%;
+    padding: 5vh 2vh;
+    text-align: center;
+  }
+
+  &__text {
+    padding: 5vh 2vh;
+
+    &--highlight {
+      font-weight: bold;
+      font-size: map-get($font-size, buy-Btn);
     }
   }
 }
