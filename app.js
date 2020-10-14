@@ -1,17 +1,12 @@
 //  Importing packages
 const express = require('express');
 const dotenv = require('dotenv');
-const morgan = require('morgan');
+
 
 // Loading config env variablesnpm
 dotenv.config({ path: './config/config.env' });
 // Starting the server
 const app = express();
-
-// HTTP request logger on dev mode only
-if (process.env.NODE_ENV == 'development') {
-  app.use(morgan('dev'));
-}
 
 // Enabling static files
 app.use(express.static('public'));
