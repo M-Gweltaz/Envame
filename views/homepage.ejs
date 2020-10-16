@@ -3,14 +3,14 @@
 
 <!-- LandingPage -->
 <div class="landing-page">
-  <div class="landing-page__pictures"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-left.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
+  <div class="landing-page__pictures" data-aos="fade-right" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-left.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
   <div class="landing-page__center">
-    <div class="landing-page__brand">
+    <div class="landing-page__brand" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="750">
       <img class="landing-page__brand--logo" src="./assets/pictures/logo-envame-plain.png" alt="Logo marque envame">
     </div>
     <div class="landing-page__advertising"><p>Tranformer votre peau en <span class="landing-page__advertising--highlight">deux semaines</span> pour seulement 149€ !</p></div>
   </div>
-  <div class="landing-page__pictures"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-right.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
+  <div class="landing-page__pictures" data-aos="fade-left" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-right.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
 </div>
 
 <!-- 4 comercials -->
@@ -131,21 +131,21 @@
       <p class="selling-info__current-price">Prix de lancement: 149€</p>
       <p class="selling-info__old-price">Prix d'origine: <span class="selling-info__old-price--highlight">189€</span></p> 
     </div>
-    <div class="selling-info__Btn buyModal">Acheter</div>
+    <div class="selling-info__Btn buyModal" id="contact">Acheter</div>
   </div>
 </div>
 
 <!-- Newsletter -->
-<div class="title-bg-white" id="contact">
+<div class="title-bg-white">
   <h2 class="title-pink">Suivez-nous</h2>
 </div>
-<form class="newsletter" action="newsletter"
+<form class="newsletter" action="/newsletter"
 method="post">
   <p class="newsletter__text">Inscrivez-vous a notre newsletter et vous recevrez un cadeau d’une valeur de 50‎€ dès votre premier achat !</p>
   <div class="newsletter__form">
     <div class="newsletter__email">
-      <label class="newsletter__email--label"for="email"> Entrez votre Email:</label>
-      <input class="newsletter__email--input" type="email" id="email" data-length="50" maxlength="50" required>
+      <label class="newsletter__email--label" for="email"> Entrez votre Email:</label>
+      <input class="newsletter__email--input" type="email" id="email" name="email" data-length="50" maxlength="50" required>
     </div>
     <input class="newsletter__btn" type="submit" value="Je m'inscris">
   </div>
@@ -166,6 +166,15 @@ method="post">
   </div>
 </div>
 
+<% if(newsletterEmail) { %>
+<div class="modal-newsletter__bg ">
+  <div class="modal-newsletter">
+    <span class="modal-newsletter__close">X</span>
+    <h3 class="modal-newsletter__title">Inscription réussi</h3>
+    <p class="modal-newsletter__text">Félicitation, grâce a votre inscription, vous serez informé de toutes nos nouveautés en avant-première !<br>Vous recevrez votre code cadeau à préciser lors de votre première commande directement sur votre Email : <span class="modal-newsletter__text--highlight"><%= newsletterEmail %></span></p>
+  </div>
+</div>
+<% } %>
 
 <!-- Footer -->
 <%- include('layouts/footer'); -%>

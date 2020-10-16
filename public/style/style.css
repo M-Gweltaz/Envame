@@ -1446,4 +1446,97 @@
   font-weight: bold;
   font-size: 1.5rem;
 }
+
+.modal-newsletter {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40vw;
+  height: 50vh;
+  background-color: #fff;
+  color: #ff4e53;
+  -webkit-box-shadow: 0rem 0rem 0.3125rem -0.125rem;
+          box-shadow: 0rem 0rem 0.3125rem -0.125rem;
+  border-radius: 1.5625rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .modal-newsletter {
+    width: 60vw;
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .modal-newsletter {
+    width: 80vw;
+    height: 60vh;
+  }
+}
+
+.modal-newsletter__bg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-transition: visibility 0s, opacity 0.5s;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.modal-newsletter__bg--hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal-newsletter__close {
+  position: absolute;
+  cursor: pointer;
+  color: #fff;
+  top: 0.625rem;
+  right: 0.625rem;
+  font-weight: bold;
+}
+
+.modal-newsletter__title {
+  background-color: #ff4e53;
+  color: #fff;
+  width: 100%;
+  padding: 5vh 2vh;
+  text-align: center;
+}
+
+.modal-newsletter__text {
+  margin: auto;
+  padding: 5vh 2vh;
+}
+
+.modal-newsletter__text--highlight {
+  font-weight: bold;
+}
 /*# sourceMappingURL=style.css.map */

@@ -36,10 +36,24 @@ const buyModal = () => {
   });
 }
 
+// Newsletter modal
+const newsletterModal = () => {
+  const newsletter = document.querySelector('.modal-newsletter');
+  if(newsletter){
+    const modalCloseBtn = document.querySelector('.modal-newsletter__close');
+    const modal = document.querySelector('.modal-newsletter__bg');
+  
+    modalCloseBtn.addEventListener('click', () => {
+      modal.classList.add('modal-newsletter__bg--hidden');
+      });
+  }
+}
+
 // Invoc global function
 const app = ()=>{
   responsivNavbar();
   buyModal();
+  newsletterModal();
 }
 
 app()
