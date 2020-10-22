@@ -59,8 +59,7 @@ $font-size: (
   background-color: $bg;
   color: $text;
   border-radius: pixelToRem(50);
-  box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2)
-    map-get($color-palette, black);
+  box-shadow: 0 0 pixelToRem(5) pixelToRem(-2) map-get($color-palette, black);
   font-size: map-get($font-size, buy-Btn);
   padding: 1vw 2vw;
   border: 0.2rem solid $bg;
@@ -82,7 +81,8 @@ $font-size: (
 $breakpoints: (
   laptop: 1000px,
   tablet: 800px,
-  mobile: 600px,
+  smartphone: 600px,
+  xs-phone: 450px,
 );
 
 //responsive design
@@ -98,21 +98,27 @@ $breakpoints: (
   }
 }
 
-@mixin mobile-only {
-  @media screen and (max-width: map-get($breakpoints, mobile)) {
+@mixin smartphone-only {
+  @media screen and (max-width: map-get($breakpoints,  smartphone)) {
+    @content;
+  }
+}
+@mixin xs-phone-only {
+  @media screen and (max-width: map-get($breakpoints,  xs-phone)) {
     @content;
   }
 }
 
 //  Global reset
-* {
-  margin: pixelToRem(0);
-  padding: pixelToRem(0);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   font-size: map-get($font-size, main);
-
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 // Navbar
@@ -121,72 +127,101 @@ $breakpoints: (
   @include box-sizing(100vw, 15vh);
   background-color: map-get($color-palette, neutral);
   position: fixed;
-  top: pixelToRem(0);
-  z-index: 1;
-}
+  top: 0;
+  z-index: 5;
 
-.navbar__logo {
-  width: 9vh;
-}
-
-.navbar__menu {
-  @include flexbox(space-around, center);
-  @include box-sizing(50vw, 15vh);
-  list-style: none;
-
-  @include laptop-only {
-    width: 70vw;
+  &__logo {
+    width: 9vh;
   }
 
-  @include tablet-only {
-    @include flexbox(space-around, center, column);
-    position: absolute;
-    right: pixelToRem(0);
-    top: 15vh;
-    height: 85vh;
-    width: 60vw;
-    background-color: lighten(map-get($color-palette, brand), 75%);
-    opacity: 0;
-    visibility: hidden;
+  &__menu {
+    @include flexbox(space-around, center);
+    @include box-sizing(60vw, 15vh);
+    font-size: bold;
+    list-style: none;
+
+    @include laptop-only {
+      width: 70vw;
+    }
+
+    @include tablet-only {
+      @include flexbox(space-around, center, column);
+      position: absolute;
+      right: 0;
+      top: 15vh;
+      height: 85vh;
+      width: 60vw;
+      transform: scale(0);
+      transform-origin: right;
+      visibility: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 85vh;
+        background-color: map-get($color-palette, secondary);
+        opacity: 0.95;
+        z-index: -1;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -40vw;
+        width: 40vw;
+        height: 85vh;
+        background-color: map-get($color-palette, neutral);
+        opacity: 0.2;
+        filter: blur(5px);
+        z-index: -1;
+      }
+    }
+  }
+
+  &__links {
+    @include links(black, primary);
+    font-size: map-get($font-size, highlight);
+
+    @include tablet-only {
+      @include links(neutral, primary);
+      font-weight: bold;
+    }
+
+    &--buy {
+      font-size: map-get($font-size, buy-Btn);
+      cursor: pointer;
+      padding: 1vw 2vw;
+      border: 0.2rem solid map-get($color-palette, primary);
+      background-color: map-get($color-palette, primary);
+      color: map-get($color-palette, neutral);
+      box-shadow: 0 0 pixelToRem(5) pixelToRem(-2)
+        map-get($color-palette, black);
+
+      &:hover {
+        background-color: map-get($color-palette, neutral);
+        color: map-get($color-palette, primary);
+        transition: all 0.3s ease;
+      }
+
+      &:active,
+      &:focus {
+        // background-color: map-get($color-palette, neutral);
+        border-color: darken(map-get($color-palette, primary), 15%);
+        color: darken(map-get($color-palette, primary), 15%);
+        background-color: map-get($color-palette, neutral);
+      }
+    }
   }
 }
 
 // burgernav sliding animations
 .navbar__menu.burgerNavOpen {
-  transition: all 0.1s ease-in-out;
-  transform-origin: left;
-  opacity: 0.95;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
   visibility: visible;
-}
-
-.navbar__links {
-  @include links(black, primary);
-
-  &--buy {
-    // @include links(neutral, primary);
-    font-size: map-get($font-size, buy-Btn);
-    cursor: pointer;
-    padding: 1vw 2vw;
-    border: 0.2rem solid map-get($color-palette, primary);
-    background-color: map-get($color-palette, primary);
-    color: map-get($color-palette, neutral);
-    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2)
-      map-get($color-palette, black);
-
-    &:hover {
-      background-color: map-get($color-palette, neutral);
-      color: map-get($color-palette, primary);
-      transition: all 0.3s ease;
-    }
-
-    &:active,
-    &:focus {
-      // background-color: map-get($color-palette, neutral);
-      border-color: darken(map-get($color-palette, primary), 15%);
-      color: darken(map-get($color-palette, primary), 15%);
-      background-color: map-get($color-palette, neutral);
-    }
-  }
 }
 
 // navbar Link animation
@@ -203,6 +238,14 @@ $breakpoints: (
     @include flexbox(center, center, column);
     cursor: pointer;
     transition: all 0.5s ease-in-out;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include xs-phone-only {
+    width: 30vw;
   }
 }
 
@@ -214,6 +257,10 @@ $breakpoints: (
   margin: 1vh;
   transition: all 0.2s ease-in-out;
 
+  @include xs-phone-only {
+    width: 20vw;
+  }
+
   &::before,
   &::after {
     content: '';
@@ -223,6 +270,10 @@ $breakpoints: (
     background-color: map-get($color-palette, brand);
     border-radius: pixelToRem(5);
     margin: 1vh;
+
+    @include xs-phone-only {
+      width: 20vw;
+    }
   }
 
   &::before {
@@ -241,66 +292,162 @@ $breakpoints: (
 
 .hamburger-btn.burgerNavOpen .hamburger-line::before {
   transform: rotate(45deg);
+  transition: all 0.3s;
 }
 
 .hamburger-btn.burgerNavOpen .hamburger-line::after {
   transform: rotate(-45deg);
+  transition: all 0.3s;
 }
 
 // Landing-Page
 .landing-page {
-  @include box-sizing(100vw, 85vh);
+  @include box-sizing(100vw, 80vh);
   max-width: 100%;
-  @include flexbox(space-around, center);
+  @include flexbox();
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  transition-duration: 1.2s;
+  transition-property: opacity, transform;
+
+  &__pictures {
+    margin: auto;
+
+    &--left {
+      height: 70vh;
+
+      @include tablet-only {
+        display: none;
+      }
+    }
+
+    &--right {
+      height: 70vh;
+
+      @include tablet-only {
+        display: none;
+      }
+    }
+  }
+
+  &__center {
+    @include flexbox(space-around, center, column);
+    @include box-sizing(40vw, 70vh);
+    position: relative;
+
+    @include tablet-only {
+      width: 80vw;
+    }
+  }
+
+  &__clip {
+    max-height: 50vh;
+    max-width: 80vw;
+    margin: 3vh 0;
+    box-shadow: 0 0 pixelToRem(10) pixelToRem(-2) map-get($color-palette, black);
+    z-index: 1;
+  }
+
+  &__advertising {
+    text-align: center;
+    font-size: map-get($font-size, highlight);
+    padding: 1vh;
+
+    &--highlight {
+      font-weight: bold;
+      font-size: map-get($font-size, highlight);
+    }
+  }
+
+  &__btn {
+    display: none;
+
+    @include tablet-only {
+      display: block;
+      @include button(primary, neutral);
+      @include flexbox();
+      cursor: pointer;
+      font-size: map-get($font-size, buy-Btn);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      margin: 3vh;
+      padding: 1 2vh;
+      z-index: 2;
+    }
+  }
+}
+
+.landing-page__space-creator {
+  width: 7.5vw;
+  height: 5vh;
+  padding: 15vh;
+  margin: auto;
+}
+
+.landing-page-push-effect {
+  transform: translateY(-100%) scale(0.9);
+  opacity: 0;
+}
+
+.container {
+  transition-delay: 0.2s;
+  transform: translateY(20%);
   margin-top: 15vh;
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.8s;
 }
 
-.landing-page__pictures--left {
-  height: 70vh;
-
-  @include tablet-only {
-    display: none;
-  }
-}
-.landing-page__pictures--right {
-  height: 70vh;
-
-  @include tablet-only {
-    display: none;
-  }
-}
-
-.landing-page__center {
-  @include flexbox(space-around, center, column);
-  @include box-sizing(40vw, 50vh);
-
-  @include tablet-only {
-    width: 70vw;
-  }
-}
-
-.landing-page__brand--logo {
-  max-width: 30vw;
-}
-
-.landing-page__advertising {
-  text-align: center;
-  font-size: map-get($font-size, highlight);
-
-  &--highlight {
-    font-weight: bold;
-  }
+.next-content-pull-effect {
+  opacity: 1;
+  transform: translateY(0%);
 }
 
 // 4 commercials
 .fourcomercials {
   @include flexbox(space-around, center, column);
-  @include box-sizing(80vw, 40vh);
   font-size: map-get($font-size, highlight);
+  width: 100vw;
+  max-width: 100%;
+  padding: 3vh;
   margin: auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../assets/pictures/quote.svg) center no-repeat;
+    width: 50vw;
+    height: 30vh;
+    opacity: 0.2;
+    filter: blur(1.5px);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url(../assets/pictures/reversed-quote.svg) center no-repeat;
+    width: 50vw;
+    height: 30vh;
+    opacity: 0.3;
+    filter: blur(1.5px);
+  }
 
   &__1 {
     transform: translateX(-20vw);
+    padding: 3vh 0;
+
+    @include laptop-only {
+      transform: translateX(-15vw);
+    }
 
     @include tablet-only {
       transform: translateX(0);
@@ -310,42 +457,59 @@ $breakpoints: (
 
   &__2 {
     transform: translateX(10vw);
+    padding: 3vh 0;
+
+    @include laptop-only {
+      transform: translateX(7vw);
+    }
 
     @include tablet-only {
       transform: translateX(0);
+      @include flexbox(space-around, start, column);
     }
   }
 
   &__3 {
     transform: translateX(-10vw);
+    padding: 3vh 0;
 
+    @include laptop-only {
+      transform: translateX(-7vw);
+    }
     @include tablet-only {
       transform: translateX(0);
+      @include flexbox(space-around, start, column);
     }
   }
 
   &__4 {
     transform: translateX(20vw);
+    padding: 3vh 0;
+
+    @include laptop-only {
+      transform: translateX(15vw);
+    }
 
     @include tablet-only {
       transform: translateX(0);
+      @include flexbox(space-around, start, column);
     }
   }
 }
 
 // Title bg pink text white
 .title-bg-pink {
-  @include box-sizing(100vw, 10vh);
-  max-width: 100%;
   @include flexbox();
   background-color: map-get($color-palette, primary);
-  margin-top: 5vh;
+  width: 100vw;
+  max-width: 100%;
 }
 
 .title-white {
   color: map-get($color-palette, neutral);
   font-size: map-get($font-size, title);
   text-align: center;
+  padding: 3vh 1vh;
 }
 
 // Envam Beauty mask content
@@ -353,13 +517,33 @@ $breakpoints: (
   @include flexbox(space-around, center, column);
   background-color: map-get($color-palette, primary);
   color: map-get($color-palette, neutral);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: url(../assets/pictures/wave.svg);
+    top: -4.8vh;
+    left: 0;
+    width: 100vw;
+    height: 5vh;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: url(../assets/pictures/reversed-wave.svg);
+    bottom: -4.8vh;
+    left: 0;
+    width: 100vw;
+    height: 5vh;
+  }
 
   &__clip {
     max-height: 50vh;
     max-width: 80vw;
-    margin: 5vh 0;
-    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
-      map-get($color-palette, black);
+    margin: 3vh 0;
+    box-shadow: 0 0 pixelToRem(10) pixelToRem(-2) map-get($color-palette, black);
   }
 
   &__text {
@@ -376,42 +560,49 @@ $breakpoints: (
 
 // Title bg white text pink
 .title-bg-white {
-  @include box-sizing(100vw, 10vh);
-  max-width: 100%;
   @include flexbox();
   background-color: map-get($color-palette, neutral);
-  margin-top: 5vh;
+  width: 100vw;
+  max-width: 100%;
 }
 
 .title-pink {
   color: map-get($color-palette, primary);
   font-size: map-get($font-size, title);
   text-align: center;
+  padding: 3vh 1vh;
 }
 
 // 3 effects content
+
+.collor-effect {
+  margin-top: 5vh;
+}
+
 .red-light {
   @include flexbox(space-around, center);
   padding: 5vh;
+  margin-bottom: 5vh;
 
   @include tablet-only {
     flex-direction: column;
   }
   &__picture {
     max-width: 40vw;
-    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
-      map-get($color-palette, black);
+    box-shadow: 0 0 pixelToRem(10) pixelToRem(-2) map-get($color-palette, black);
 
     @include tablet-only {
       max-width: 80vw;
     }
   }
 
-  &__coment {
-    max-width: 40vw;
+  &__color {
+    font-size: map-get($font-size, highlight);
+    text-align: center;
+    padding: 1vh;
 
-    @include tablet-only {
-      max-width: 80vw;
+    &--length {
+      font-size: map-get($font-size, small);
     }
   }
 
@@ -419,11 +610,13 @@ $breakpoints: (
     font-size: map-get($font-size, buy-Btn);
     text-align: center;
     padding: 1vh;
+  }
 
-    &--color {
-      font-size: map-get($font-size, highlight);
-      text-align: center;
-      padding: 1vh;
+  &__coment {
+    max-width: 40vw;
+
+    @include tablet-only {
+      max-width: 80vw;
     }
   }
 }
@@ -433,25 +626,48 @@ $breakpoints: (
   background-color: map-get($color-palette, primary);
   color: map-get($color-palette, neutral);
   padding: 5vh;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: url(../assets/pictures/wave.svg);
+    top: -4.8vh;
+    left: 0;
+    width: 100vw;
+    height: 5vh;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: url(../assets/pictures/reversed-wave.svg);
+    bottom: -4.8vh;
+    left: 0;
+    width: 100vw;
+    height: 5vh;
+  }
 
   @include tablet-only {
     flex-direction: column-reverse;
   }
+
   &__picture {
     max-width: 40vw;
-    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
-      map-get($color-palette, black);
+    box-shadow: 0 0 pixelToRem(10) pixelToRem(-2) map-get($color-palette, black);
 
     @include tablet-only {
       max-width: 80vw;
     }
   }
 
-  &__coment {
-    max-width: 40vw;
+  &__color {
+    font-size: map-get($font-size, highlight);
+    text-align: center;
+    padding: 1vh;
 
-    @include tablet-only {
-      max-width: 80vw;
+    &--length {
+      font-size: map-get($font-size, small);
     }
   }
 
@@ -459,37 +675,42 @@ $breakpoints: (
     font-size: map-get($font-size, buy-Btn);
     text-align: center;
     padding: 1vh;
+  }
 
-    &--color {
-      font-size: map-get($font-size, highlight);
-      text-align: center;
-      padding: 1vh;
+  &__coment {
+    max-width: 40vw;
+
+    @include tablet-only {
+      max-width: 80vw;
     }
   }
 }
 
 .blue-light {
   @include flexbox(space-around, center);
-  margin: 5vh;
+  padding: 5vh;
+  margin-top: 5vh;
 
   @include tablet-only {
     flex-direction: column;
   }
+
   &__picture {
     max-width: 40vw;
-    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
-      map-get($color-palette, black);
+    box-shadow: 0 0 pixelToRem(10) pixelToRem(-2) map-get($color-palette, black);
 
     @include tablet-only {
       max-width: 80vw;
     }
   }
 
-  &__coment {
-    max-width: 40vw;
+  &__color {
+    font-size: map-get($font-size, highlight);
+    text-align: center;
+    padding: 1vh;
 
-    @include tablet-only {
-      max-width: 80vw;
+    &--length {
+      font-size: map-get($font-size, small);
     }
   }
 
@@ -497,11 +718,13 @@ $breakpoints: (
     font-size: map-get($font-size, buy-Btn);
     text-align: center;
     padding: 1vh;
+  }
 
-    &--color {
-      font-size: map-get($font-size, highlight);
-      text-align: center;
-      padding: 1vh;
+  &__coment {
+    max-width: 40vw;
+
+    @include tablet-only {
+      max-width: 80vw;
     }
   }
 }
@@ -510,19 +733,42 @@ $breakpoints: (
 .light-effect {
   @include flexbox(space-around, center, column);
 
+  &__bg {
+    @include flexbox();
+    width: 100vw;
+    position: relative;
+    padding: 3vh 0;
+    margin: 5vh 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../assets/pictures/pink-bg-unplash.webp);
+      background-size: cover;
+      filter: blur(pixelToRem(3));
+      opacity: 0.3;
+    }
+  }
+
   &__clip {
     max-height: 50vh;
     max-width: 80vw;
-    margin: 5vh 0;
-    box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(10) pixelToRem(-2)
-      map-get($color-palette, black);
+    margin: 3vh 0;
+    box-shadow: 0 0 pixelToRem(10) pixelToRem(-2) map-get($color-palette, black);
   }
 
   &__text {
-    max-width: 70vw;
+    width: 70vw;
     margin: auto;
-    margin-bottom: 5vh;
+    padding: 3vh;
     line-height: 1.5rem;
+
+    @include tablet-only {
+      width: 80vw;
+    }
 
     &--highlight {
       font-weight: bold;
@@ -535,8 +781,15 @@ $breakpoints: (
   @include flexbox(space-around, center, column);
 
   &__text {
-    max-width: 70vw;
+    width: 70vw;
+    padding: 3vh;
     margin: auto;
+    position: relative;
+    background-color: map-get($color-palette, neutral);
+
+    @include tablet-only {
+      width: 80vw;
+    }
   }
 
   &__Btn {
@@ -547,18 +800,41 @@ $breakpoints: (
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-    margin: 5vh;
+    margin: 3vh 3vh 6vh 3vh;
+    padding: 1 2vh;
   }
 }
 
 // User manual
 .user-manual {
   background-color: map-get($color-palette, primary);
-  padding: 5vh 0;
   color: map-get($color-palette, neutral);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: url(../assets/pictures/wave.svg);
+    top: -4.8vh;
+    left: 0;
+    width: 100vw;
+    height: 5vh;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: url(../assets/pictures/reversed-wave.svg);
+    bottom: -4.8vh;
+    left: 0;
+    width: 100vw;
+    height: 5vh;
+  }
 
   &__steps {
     @include flexbox(space-around, start);
+    counter-reset: step;
+    padding: 3vh 0vh;
 
     @include tablet-only {
       @include flexbox(space-around, center, column);
@@ -566,56 +842,84 @@ $breakpoints: (
   }
 
   &__text {
-    @include box-sizing(70vw, 15vh);
+    width: 70vw;
     margin: auto;
-    padding-top: 5vh;
+    padding: 3vh 0;
 
     @include tablet-only {
-      height: 20vh;
+      width: 80vw;
     }
   }
 }
 
 .step {
-  @include flexbox(start, center, column);
-  @include box-sizing(20vw, 40vh);
+  @include flexbox(start, start, column);
+  width: 15vw;
 
   @include tablet-only {
-    @include box-sizing(70vw, 40vh);
+    width: 40vw;
   }
 
-  @include mobile-only {
-    @include box-sizing(70vw, 50vh);
+  @include smartphone-only {
+    width: 70vw;
   }
 
   &__picture {
-    border-radius: 100%;
-    max-width: 20vw;
+    align-self: center;
+    border-radius: 50%;
+    width: 15vw;
+    background-color: map-get($color-palette, neutral);
+    border: pixelToRem(5) solid darken(map-get($color-palette, neutral), 15%);
 
     @include tablet-only {
-      max-width: 40vw;
-    }
-
-    @include mobile-only {
-      max-width: 60vw;
+      width: 40vw;
     }
   }
 
   &__text {
-    margin-top: 5vh;
+    margin-top: 3vh;
+    position: relative;
 
-    @include mobile-only {
-      margin-bottom: 5vh;
+    &::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      font-size: map-get($font-size, highlight);
+      font-weight: 900;
+      text-align: center;
+      left: -2rem;
+      top: -0.3em;
+      background-color: map-get($color-palette, neutral);
+      color: map-get($color-palette, primary);
+      border: pixelToRem(3) solid darken(map-get($color-palette, neutral), 15%);
+      border-radius: 50%;
+      width: pixelToRem(30);
+      height: pixelToRem(30);
+    }
+
+    @include smartphone-only {
+      margin-bottom: 3vh;
     }
   }
 }
 
 // Selling point
 .selling__bg-picture {
-  background: url(../assets/pictures/selling-spot-background.png) no-repeat
-    center center;
   @include flexbox(space-around);
-  margin-top: 5vh;
+  margin: 3vh 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../assets/pictures/selling-spot-background.webp) no-repeat
+      center center;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: -1;
+  }
 
   @include tablet-only {
     flex-direction: column;
@@ -624,44 +928,61 @@ $breakpoints: (
 
 .selling-advantages {
   @include flexbox(space-around, center, column);
-  @include box-sizing(30vw, 50vh);
-  margin: 5vh;
-  background-color: rgba(245, 198, 204, 0.39);
+  width: 50vw;
+  margin: 3vh;
   border-radius: pixelToRem(50);
 
   @include tablet-only {
-    @include box-sizing(70vw, 60vh);
+    width: 70vw;
+  }
+
+  @include smartphone-only {
+    width: 80vw;
   }
 
   &__title {
     font-size: map-get($font-size, highlight);
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    padding: 3vh;
   }
 
   &__text {
-    text-transform: uppercase;
     list-style-type: none;
     padding: 2vh;
+    position: relative;
 
     &:before {
       content: '♥';
+      position: absolute;
+      top: pixelToRem(0);
+      left: pixelToRem(-10);
+      font-size: map-get($font-size, title);
       color: map-get($color-palette, primary);
-      padding-right: 1vw;
     }
   }
 }
 
 .selling-info {
   @include flexbox(space-around, center, column);
-  @include box-sizing(30vw, 40vh);
+  width: 40vw;
+  margin: 3vh;
   text-align: center;
+  position: relative;
 
   @include tablet-only {
-    @include box-sizing(70vw, 35vh);
+    width: 70vw;
+  }
+
+  @include smartphone-only {
+    width: 80vw;
   }
 
   &__current-price {
-    font-weight: bold;
     font-size: map-get($font-size, highlight);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
   }
 
   &__old-price {
@@ -685,20 +1006,18 @@ $breakpoints: (
 
 .newsletter {
   @include flexbox(space-around, center, column);
-  @include box-sizing(80vw, 50vh);
+  width: 80vw;
+  padding: 3vh 0;
   margin: auto;
-
-  @include tablet-only {
-    @include box-sizing(80vw, 70vh);
-  }
+  margin-bottom: 5vh;
 
   &__form {
     @include flexbox(space-around, center);
     width: 100%;
+    padding: 3vh 0;
 
     @include tablet-only {
       flex-direction: column;
-      margin: 2vh 0;
     }
   }
 
@@ -713,7 +1032,7 @@ $breakpoints: (
     &--input {
       @include box-sizing(30vw, 7.5vh);
       background-color: rgba(245, 198, 204, 0.39);
-      box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2);
+      box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
       border: none;
       font-size: map-get($font-size, buy-Btn);
 
@@ -731,40 +1050,47 @@ $breakpoints: (
     margin-top: 3vh;
 
     @include tablet-only {
-      @include box-sizing(50vw, 7.5vh);
+      width: 50vw;
+    }
+
+    @include smartphone-only {
+      width: 60vw;
     }
   }
 
   &__age {
     @include flexbox(space-around);
-    font-size: map-get($font-size, small);
 
     &--checkbox {
-      @include box-sizing(3vw, 3vh);
-      margin-right: 2.5vh;
+      width: pixelToRem(25);
+      height: pixelToRem(25);
+      margin: 2vh;
 
       @include tablet-only {
         @include box-sizing(7.5vw, 7.5vh);
       }
 
-      @include mobile-only() {
+      @include smartphone-only() {
         @include box-sizing(15vw, 15vh);
       }
+    }
+
+    &--text {
+      font-size: map-get($font-size, small);
     }
   }
 }
 
 .footer {
   @include flexbox(space-around, start);
-  @include box-sizing(100vw, 30vh);
-  max-width: 100%;
+  width: 100vw;
+  min-height: 30vh;
   background-color: map-get($color-palette, secondary);
-  box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2);
+  box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
 
   @include tablet-only {
     flex-direction: column;
-    padding-top: 5vh;
-    height: 60vh;
+    align-items: center;
   }
 
   &__title {
@@ -775,26 +1101,31 @@ $breakpoints: (
 
   &__assistance {
     @include flexbox(start, center, column);
-    @include box-sizing(40vw, 20vh);
-    margin: auto;
+    width: 30vw;
+    margin: 3vh 1.5vh;
 
     @include tablet-only {
-      @include box-sizing(70vw, 30vh);
+      width: 70vw;
     }
   }
 
   &__contact {
     @include flexbox(start, center, column);
-    @include box-sizing(50vw, 20vh);
-    margin: auto;
+    width: 30vw;
+    margin: 3vh 1.5vh;
 
     @include tablet-only {
-      @include box-sizing(70vw, 30vh);
+      width: 70vw;
     }
+  }
 
-    &--menu {
-      @include flexbox(space-around, start);
-      @include box-sizing(50vw, 20vh);
+  &__social {
+    @include flexbox(start, center, column);
+    width: 30vw;
+    margin: 3vh 1.5vh;
+
+    @include tablet-only {
+      width: 70vw;
     }
   }
 
@@ -806,6 +1137,26 @@ $breakpoints: (
     list-style-type: none;
     color: map-get($color-palette, tertiary);
     margin: 2vh;
+
+    &--break-word {
+      word-break: break-all;
+    }
+  }
+
+  &__social-link {
+    list-style-type: none;
+    color: map-get($color-palette, tertiary);
+    margin: 2vh;
+
+    &:hover {
+      transform: rotate(360deg);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  &__social-logo {
+    width: 7.5vh;
+    margin: auto;
   }
 }
 
@@ -816,8 +1167,8 @@ $breakpoints: (
 
 .information {
   @include box-sizing(70vw, 50vh);
-  @include flexbox(space-around, start, column);
-  padding: 5vh 0;
+  @include flexbox(space-around, center, column);
+  padding: 3vh 0;
   margin: auto;
 
   @include tablet-only {
@@ -837,18 +1188,25 @@ $breakpoints: (
 .modal {
   position: relative;
   @include flexbox(start, center, column);
-  @include box-sizing(40vw, 40vh);
+  width: 40vw;
   background-color: map-get($color-palette, neutral);
-  color: map-get($color-palette, primary);
-  box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2);
+  color: map-get($color-palette, black);
+  box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
   border-radius: pixelToRem(25);
+  transform: translate(150%, 100%);
+  transition: all 0.3s ease-in-out;
+  z-index: 3;
+
+  &--active {
+    transform: translate(0%, 0%);
+  }
 
   @include laptop-only {
-    @include box-sizing(60vw, 40vh);
+    width: 60vw;
   }
 
   @include tablet-only {
-    @include box-sizing(80vw, 60vh);
+    width: 80vw;
   }
 
   &__bg {
@@ -861,7 +1219,8 @@ $breakpoints: (
     background-color: rgba(0, 0, 0, 0.4);
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
+    transition: visibility 0s, opacity 0.3s;
+    z-index: 2;
 
     &--active {
       visibility: visible;
@@ -884,14 +1243,18 @@ $breakpoints: (
     width: 100%;
     padding: 5vh 2vh;
     text-align: center;
+    border-radius: pixelToRem(22);
   }
 
   &__text {
     padding: 5vh 2vh;
 
     &--highlight {
+      padding: 0vh 2vh 2vh 5vh;
       font-weight: bold;
       font-size: map-get($font-size, buy-Btn);
+      color: map-get($color-palette, primary);
+      word-break: break-all;
     }
   }
 }
@@ -900,18 +1263,19 @@ $breakpoints: (
 .modal-newsletter {
   position: relative;
   @include flexbox(start, center, column);
-  @include box-sizing(40vw, 50vh);
+  width: 40vw;
   background-color: map-get($color-palette, neutral);
   color: map-get($color-palette, primary);
-  box-shadow: pixelToRem(0) pixelToRem(0) pixelToRem(5) pixelToRem(-2);
+  box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
   border-radius: pixelToRem(25);
+  z-index: 3;
 
   @include laptop-only {
-    @include box-sizing(60vw, 50vh);
+    width: 60vw;
   }
 
   @include tablet-only {
-    @include box-sizing(80vw, 60vh);
+    width: 80vw;
   }
 
   &__bg {
@@ -923,6 +1287,7 @@ $breakpoints: (
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     transition: visibility 0s, opacity 0.5s;
+    z-index: 2;
 
     &--hidden {
       visibility: hidden;
@@ -945,15 +1310,18 @@ $breakpoints: (
     width: 100%;
     padding: 5vh 2vh;
     text-align: center;
+    border-radius: pixelToRem(22);
   }
 
   &__text {
     margin: auto;
     padding: 5vh 2vh;
+    color: map-get($color-palette, black);
 
     &--highlight {
       font-weight: bold;
       font-size: map-get($font-size, buy-hightlight);
+      color: map-get($color-palette, primary);
     }
   }
 }

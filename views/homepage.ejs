@@ -3,178 +3,186 @@
 
 <!-- LandingPage -->
 <div class="landing-page">
-  <div class="landing-page__pictures" data-aos="fade-right" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-left.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
+  <div class="landing-page__pictures" data-aos="fade-right" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-left.webp" alt="photo visage ayant utilisé le masque de beauté envame"></div>
   <div class="landing-page__center">
-    <div class="landing-page__brand" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="750">
-      <img class="landing-page__brand--logo" src="./assets/pictures/logo-envame-plain.png" alt="Logo marque envame">
+    <video class="landing-page__clip" src="./assets/videos/envame-add.mp4"  data-aos="zoom-in" data-aos-delay="300" data-aos-duration="750" autoplay muted controls></video>
+    <p class="landing-page__advertising">Tranformer votre peau en <span class="landing-page__advertising--highlight">deux semaines</span> pour seulement 149€ !</p>
+    <div class="landing-page__btn buyModal">Acheter</div>
+  </div>
+  <div class="landing-page__pictures" data-aos="fade-left" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-right.webp" alt="photo visage ayant utilisé le masque de beauté envame"></div>
+</div>
+<div class="landing-page__space-creator"></div>
+
+<div class="container">
+    <!-- 4 comercials -->
+  <div class="fourcomercials"  >
+    <div><p class="fourcomercials__1">Favorise le rajeunissement et l'éclat du visage</p></div>
+    <div><p class="fourcomercials__2">Lutte efficacement contre l'acnée</p></div>
+    <div><p class="fourcomercials__3" id="mask-envame">Approuvé par les dermatologues</p></div> 
+    <div><p class="fourcomercials__4">Transformation garantie en seulement 15min / jours</p></div>
+  </div>
+
+  <!-- Envam Beauty mask content -->
+
+  <section class="mask-presentation">
+    <div class="title-bg-pink">
+      <h2 class="title-white">Masque SPA 2.0</h2>
     </div>
-    <div class="landing-page__advertising"><p>Tranformer votre peau en <span class="landing-page__advertising--highlight">deux semaines</span> pour seulement 149€ !</p></div>
-  </div>
-  <div class="landing-page__pictures" data-aos="fade-left" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-right.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
-</div>
+    <video data-aos="zoom-in" data-aos-easing="ease-in-out" class="mask-presentation__clip" src="./assets/videos/Visage-3D.mp4" poster="./assets/pictures/visage-3D-background.webp" preload="none" controls></video>
+    <p class="mask-presentation__text">Le traitement LED ENVAME basé sur la PHOTOMODULATION est un traitement anti-âge ULTRA PERFORMANT utilisé depuis plusieurs années par la NASA pour réparer la peau fragilisée des astronautes. Cette performance est désormais <span class="mask-presentation__text--highlight" id="3-effects">accessible à tous</span>. <br>
+    Avoir une peau parfaite n’est plus un rêve. </p>
+  </section>
 
-<!-- 4 comercials -->
-<div class="fourcomercials"  >
-  <div data-aos="zoom-in-up"><p class="fourcomercials__1">Favorise le rajeunissement et l'éclat du visage</p></div>
-  <div data-aos="zoom-in-up"><p class="fourcomercials__2">Lutte efficacement contre l'acnée</p></div>
-  <div data-aos="zoom-in-up"><p class="fourcomercials__3" id="mask-envame">Approuvé par les dermatologues</p></div> 
-  <div data-aos="zoom-in-up"><p class="fourcomercials__4">Transformation garantie en seulement 15min / jours</p></div>
-</div>
 
-<!-- Envam Beauty mask content -->
-<div class="title-bg-pink">
-  <h2 class="title-white">Notre masque de beauté</h2>
-</div>
-<section class="mask-presentation">
-  <video data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease-in-out" class="mask-presentation__clip" src="./assets/videos/Visage-3D.mp4" poster="./assets/pictures/visage-3D-background.png" controls ></video>
-  <p class="mask-presentation__text">Le traitement LED ENVAME basé sur la PHOTOMODULATION est un traitement anti-âge ULTRA PERFORMANT utilisé depuis plusieurs années par la NASA pour réparer la peau fragilisée des astronautes. Cette performance est désormais <span class="mask-presentation__text--highlight" id="3-effects">accessible à tous</span>. <br>
-  Avoir une peau parfaite n’est plus un rêve. </p>
-</section>
-
-<!-- 3 effects content -->
-<div class="title-bg-white">
-  <h2 class="title-pink">Un masque, trois actions</h2>
-</div>
-<section class="red-light">
-  <img class="red-light__picture" src="./assets/pictures/couleur-rouge.jpg" alt="Masque lumière rouge porté par un modèle">
-  <div class="red-light__coment" data-aos="fade-right" data-aos-duration="1000">
-    <h3 class="red-light__title--color">Rouge</h3>
-    <h2 class="red-light__title">Élimine Ride & Ridules:</h2>
-    <p class="red-light__text">
-      La lumière rouge stimule la production d’élastine et de collagène ce qui redonnera une seconde jeunesse a votre peau en la rendant plus ferme et plus rebondie. Elle a aussi une action clarifante en boostant la circulation sanguine. Son effet reducteur sur les pores rendra votre peau plus douce.</p>
-  </div>
-</section>
-<section class="orange-light">
-  <div class="orange-light__coment" data-aos="fade-left" data-aos-duration="1000">
-    <h3 class="orange-light__title--color">Orange</h3>
-    <h2 class="orange-light__title">Éclaircit le teint, élimine les taches:</h2>
-    <p class="orange-light__text">
-      La lumière orange traite les zones d’hyper pigmentation en réduisant la production excessive de mélanine. Elle agit aussi contre les effets négatifs liés à une surexposition au soleil comme les rougeurs,  la couperose et les masques de grossesse. Le tout en ayant une action réparatrice sur les peaux abîmées par les produits blanchissants.</p>
-  </div>
-  <img class="orange-light__picture" src="./assets/pictures/couleur-orange.jpg" alt="Masque lumière orange porté par un modèle">
-</section>
-<section class="blue-light">
-  <img class="blue-light__picture" src="./assets/pictures/couleur-bleu.jpg" alt="Masque lumière bleu porté par un modèle">
-  <div class="blue-light__coment" data-aos="fade-right" data-aos-duration="1000">
-    <h3 class="blue-light__title--color">Bleu</h3>
-    <h2 class="blue-light__title">Traitement de l’acné:</h2>
-    <p class="blue-light__text">
-      La lumière bleue pénètre au cœur des glandes sébacées pour détruire les bactéries responsables de l’acnée. Cela a pour effet un traitement efficace et tout en douceur des comédons et boutons blancs. </p>
-  </div>
-</section>
-
-<!-- pro benefits -->
-<div class="title-bg-white">
-  <h2 class="title-pink">Une efficacité profesionnelle</h2>
-</div>
-<section class="light-effect">
-  <video data-aos="zoom-in"data-aos-duration="1000" data-aos-easing="ease-in-out" class="light-effect__clip" src="./assets/videos/Peau-3D.mp4" poster="./assets/pictures/peau-3D-background.png" controls ></video>
-  <p class="light-effect__text"> Le masque de beauté ENVAME vous illumine de lumière qui pénètre la peau <span class="light-effect__text--highlight">plus en profondeur</span> que n’importe quelle autre crème en agissant directement sur votre derme !</p>
-</section>
-
-<!-- Buying Add -->
-<div class="buying-add">
-  <p class="buying-add__text">Vous aussi profitez d'une efficacité professionnelle à la maison dès maintenant en commandant votre masque !</p>
-  <div class="buying-add__Btn buyModal" >Acheter</div>
-</div>
-
-<!-- User manual -->
-<div class="title-bg-pink">
-  <h2 class="title-white">Simple et pratique</h2>
-</div>
-<section class="user-manual">
-  <div class="user-manual__steps">  
-    <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1000" class="step__picture" src="./assets/pictures/mode-d-emploi-1.png" alt="première étape imagé">
-      <p class="step__text">1. Lavez et séchez votre visage</p>
+  <!-- 3 effects content -->
+  <section class="collor-effect">
+    <div class="title-bg-white">
+      <h2 class="title-pink">Un masque, trois actions</h2>
     </div>
-    <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1300" class="step__picture"src="./assets/pictures/mode-d-emploi-2.png" alt="deuxième étape imagé">
-      <p class="step__text">2. Connectez le masque et choisissez votre soin</p>
+    <div class="red-light">
+      <img class="red-light__picture" loading="lazy" src="./assets/pictures/couleur-rouge.webp" alt="Masque lumière rouge porté par un modèle">
+      <div class="red-light__coment" data-aos="fade-up">
+        <h3 class="red-light__color">Lumière Rouge <br><span class="red-light__color--length">630-635nm</span></h3>
+        <h2 class="red-light__title">Élimine Ride & Ridules:</h2>
+        <p class="red-light__text">
+          La lumière rouge stimule la production d’élastine et de collagène ce qui redonnera une seconde jeunesse a votre peau en la rendant plus ferme et plus rebondie. Elle a aussi une action clarifante en boostant la circulation sanguine. Son effet reducteur sur les pores rendra votre peau plus douce.</p>
+      </div>
     </div>
-    <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1600" class="step__picture" src="./assets/pictures/mode-d-emploi-3.png" alt="troisième étape imagé">
-      <p class="step__text">3. Détendez-vous pendant 15 minutes</p>
+    <div class="orange-light">
+      <div class="orange-light__coment" data-aos="fade-up">
+        <h3 class="orange-light__color">Lumière Orange <br><span class="orange-light__color--length">590-600nm</span></h3>
+        <h2 class="orange-light__title">Éclaircit le teint, élimine les taches:</h2>
+        <p class="orange-light__text">
+          La lumière orange traite les zones d’hyper pigmentation en réduisant la production excessive de mélanine. Elle agit aussi contre les effets négatifs liés à une surexposition au soleil comme les rougeurs,  la couperose et les masques de grossesse. Le tout en ayant une action réparatrice sur les peaux abîmées par les produits blanchissants.</p>
+      </div>
+      <img class="orange-light__picture" loading="lazy" src="./assets/pictures/couleur-orange.webp" alt="Masque lumière orange porté par un modèle">
     </div>
-    <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1900" class="step__picture" src="./assets/pictures/mode-d-emploi-4.png" alt="dernière étape imagé">
-      <p class="step__text">4. Profitez du résultat</p>
-  </div>
-  </div>
-  <p class="user-manual__text">A faire chaque jour 15 minutes par couleur pour obtenir le meilleur résultat puis seulement 2 à 3 fois par semaine pour le garder durablement.</p>
-</section>
-
-<!-- 4 comercials -->
-<div class="fourcomercials">
-  <div data-aos="zoom-in-up" data-aos-duration="1000"><p class="fourcomercials__1">Vos complexes feront désormais partie du passé</p></div>
-  <div data-aos="zoom-in-up" data-aos-duration="1000"><p class="fourcomercials__2">Redécouvrez le plaisir de pouvoir se regarder dans le miroir</p></div>
-  <div data-aos="zoom-in-up" data-aos-duration="1000"><p class="fourcomercials__3">Il sera désormais impossible de deviner votre âge </p></div>
-  <div data-aos="zoom-in-up" data-aos-duration="1000"><p class="fourcomercials__4">Eclaicir son teint, OUI MAIS naturellement</p></div>
-</div>
-
-<!-- Selling point -->
-<div class="title-bg-white">
-  <h2 class="title-pink">Profitez-en dès maintenant</h2>
-</div>
-<div class="selling__bg-picture">
- <div class="selling-advantages">
-   <h3 class="selling-advantages__title">Les Avantages</h3>
-   <ul>
-    <li class="selling-advantages__text">Un seul achat suffit</li>
-    <li class="selling-advantages__text">Une efficacité immédiate</li>
-    <li class="selling-advantages__text">Des résultats comparables a une intervention professionnelle</li>
-    <li class="selling-advantages__text" >Traitement indolore et sans effet secondaire</li>
-  </ul>
- </div>
-  <div class="selling-info">
-    <div class="selling-info__price">
-      <p class="selling-info__current-price">Prix de lancement: 149€</p>
-      <p class="selling-info__old-price">Prix d'origine: <span class="selling-info__old-price--highlight">189€</span></p> 
+    <div class="blue-light">
+      <img class="blue-light__picture" loading="lazy" src="./assets/pictures/couleur-bleu.webp" alt="Masque lumière bleu porté par un modèle">
+      <div class="blue-light__coment" data-aos="fade-up">
+        <h3 class="blue-light__color">Lumière Bleu<br><span class="blue-light__color--length">465-470nm</span></h3>
+        <h2 class="blue-light__title">Traitement de l’acné:</h2>
+        <p class="blue-light__text">
+          La lumière bleue pénètre au cœur des glandes sébacées pour détruire les bactéries responsables de l’acnée. Cela a pour effet un traitement efficace et tout en douceur des comédons et boutons blancs. </p>
+      </div>
     </div>
-    <div class="selling-info__Btn buyModal" id="contact">Acheter</div>
-  </div>
-</div>
+  </section>
 
-<!-- Newsletter -->
-<div class="title-bg-white">
-  <h2 class="title-pink">Suivez-nous</h2>
-</div>
-<form class="newsletter" action="/newsletter"
-method="post">
-  <p class="newsletter__text">Inscrivez-vous a notre newsletter et vous recevrez un cadeau d’une valeur de 50‎€ dès votre premier achat !</p>
-  <div class="newsletter__form">
-    <div class="newsletter__email">
-      <label class="newsletter__email--label" for="email"> Entrez votre Email:</label>
-      <input class="newsletter__email--input" type="email" id="email" name="email" data-length="50" maxlength="50" required>
+  <!-- pro benefits -->
+  <section class="light-effect">
+    <div class="title-bg-white">
+      <h2 class="title-pink">Une efficacité profesionnelle</h2>
     </div>
-    <input class="newsletter__btn" type="submit" value="Je m'inscris">
-  </div>
-  <div class="newsletter__age">
-    <input class="newsletter__age--checkbox" type="checkbox" id="authorised" name="authorised" value="authorised" required
-    checked>
-    <label class="newsletter__age--text" for="authorised">Je déclare être agé de 16 ans ou plus et accepter de recevoir des offres commerciales et personalisées de la société ENVAME</label>
-  </div>
-</form>
+     <div class="light-effect__bg">
+      <video data-aos="zoom-in" data-aos-easing="ease-in-out" class="light-effect__clip" src="./assets/videos/Peau-3D.mp4" poster="./assets/pictures/peau-3D-background.webp" preload="none" controls></video>
+     </div>
+      <p class="light-effect__text"> Le masque de beauté ENVAME vous illumine de lumière qui pénètre la peau <span class="light-effect__text--highlight">plus en profondeur</span> que n’importe quelle autre crème en agissant directement sur votre derme !</p>
+  </section>
 
-<!-- buying modal -->
-<div class="modal__bg">
-  <div class="modal">
-    <span class="modal__close">X</span>
-    <h3 class="modal__title">Payement en ligne bientôt disponible</h3>
-    <p class="modal__text">En attendant l'ajout de cette fonctionnalité vous pouvez d'ores et déjà commander votre masque Envame en nous contactant via email à :</p>
-    <p class="modal__text--highlight">contact@envame.com</p>
+  <!-- Buying Add -->
+  <div class="buying-add">
+    <p class="buying-add__text">Vous aussi profitez d'une efficacité professionnelle à la maison dès maintenant en commandant votre masque !</p>
+    <div class="buying-add__Btn buyModal" >Acheter</div>
   </div>
+
+  <!-- User manual -->
+  <section class="user-manual">
+    <div class="title-bg-pink">
+      <h2 class="title-white">Simple et pratique</h2>
+    </div>
+    <div class="user-manual__steps">  
+      <div class="step">
+        <img data-aos="flip-left" class="step__picture" src="./assets/pictures/mode-d-emploi-1.webp" alt="première étape imagé">
+        <p class="step__text">Lavez et séchez votre visage</p>
+      </div>
+      <div class="step">
+        <img data-aos="flip-left" data-aos-duration="1300" class="step__picture" src="./assets/pictures/mode-d-emploi-2.png" alt="deuxième étape imagé">
+        <p class="step__text">Connectez le masque et choisissez votre soin</p>
+      </div>
+      <div class="step">
+        <img data-aos="flip-left" data-aos-duration="1600" class="step__picture" src="./assets/pictures/mode-d-emploi-3.png" alt="troisième étape imagé">
+        <p class="step__text">Détendez-vous pendant 15 minutes</p>
+      </div>
+      <div class="step">
+        <img data-aos="flip-left" data-aos-duration="1900" class="step__picture" src="./assets/pictures/mode-d-emploi-4.webp" alt="dernière étape imagé">
+        <p class="step__text">Profitez du résultat</p>
+    </div>
+    </div>
+    <p class="user-manual__text">A faire chaque jour 15 minutes par couleur pendant 3 mois pour obtenir le meilleur résultat puis seulement 2 à 3 fois par semaine pour le garder durablement.</p>
+  </section>
+
+  <!-- 4 comercials -->
+  <div class="fourcomercials">
+    <div data-aos="zoom-in-up"><p class="fourcomercials__1">Vos complexes feront désormais partie du passé</p></div>
+    <div data-aos="zoom-in-up"><p class="fourcomercials__2">Redécouvrez le plaisir de pouvoir vous regarder dans le miroir</p></div>
+    <div data-aos="zoom-in-up"><p class="fourcomercials__3">Il sera désormais impossible de deviner votre âge </p></div>
+    <div data-aos="zoom-in-up"><p class="fourcomercials__4">Eclaicir son teint, OUI MAIS naturellement</p></div>
+  </div>
+
+  <!-- Selling point -->
+  <div class="title-bg-white">
+    <h2 class="title-pink">Profitez-en dès maintenant</h2>
+  </div>
+  <div class="selling__bg-picture">
+  <div class="selling-advantages">
+    <h3 class="selling-advantages__title">Avantages</h3>
+    <ul>
+      <li class="selling-advantages__text">Un seul achat suffit</li>
+      <li class="selling-advantages__text">Une efficacité immédiate</li>
+      <li class="selling-advantages__text">Des résultats comparables a une intervention professionnelle</li>
+      <li class="selling-advantages__text" >Traitement indolore et sans effet secondaire</li>
+    </ul>
+  </div>
+    <div class="selling-info">
+      <div class="selling-info__price">
+        <p class="selling-info__current-price">Prix de lancement: 149€</p>
+        <p class="selling-info__old-price">Prix d'origine: <span class="selling-info__old-price--highlight">189€</span></p> 
+      </div>
+      <div class="selling-info__Btn buyModal" id="contact">Acheter</div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="title-bg-white">
+    <h2 class="title-pink">Restez informé</h2>
+  </div>
+  <form class="newsletter" action="/newsletter"
+  method="post">
+    <p class="newsletter__text">Inscrivez-vous a notre newsletter et vous recevrez un cadeau d’une valeur de 50‎€ dès votre premier achat !</p>
+    <div class="newsletter__form">
+      <div class="newsletter__email">
+        <label class="newsletter__email--label" for="email"> Entrez votre Email:</label>
+        <input class="newsletter__email--input" type="email" id="email" name="email" data-length="50" maxlength="50" required>
+      </div>
+      <input class="newsletter__btn" type="submit" value="Je m'inscris">
+    </div>
+    <div class="newsletter__age">
+      <input class="newsletter__age--checkbox" type="checkbox" id="authorised" name="authorised" value="authorised" required>
+      <label class="newsletter__age--text" for="authorised">Je déclare être agé de 16 ans ou plus et accepter de recevoir des offres commerciales et personalisées de la société ENVAME</label>
+    </div>
+  </form>
 </div>
 
-<% if(newsletterEmail) { %>
-<div class="modal-newsletter__bg ">
-  <div class="modal-newsletter">
-    <span class="modal-newsletter__close">X</span>
-    <h3 class="modal-newsletter__title">Inscription réussi</h3>
-    <p class="modal-newsletter__text">Félicitation, grâce a votre inscription, vous serez informé de toutes nos nouveautés en avant-première !<br>Vous recevrez votre code cadeau à préciser lors de votre première commande directement sur votre Email : <span class="modal-newsletter__text--highlight"><%= newsletterEmail %></span></p>
+  <!-- buying modal -->
+  <div class="modal__bg">
+    <div class="modal">
+      <span class="modal__close">X</span>
+      <h3 class="modal__title">Payement en ligne bientôt disponible</h3>
+      <p class="modal__text">En attendant l'ajout de cette fonctionnalité vous pouvez d'ores et déjà commander votre masque Envame en nous contactant via email à :</p>
+      <p class="modal__text--highlight">contact@envame.com</p>
+    </div>
   </div>
-</div>
-<% } %>
+
+<!-- Newsletter Modal -->
+  <% if(newsletterEmail) { %>
+  <div class="modal-newsletter__bg ">
+    <div class="modal-newsletter">
+      <span class="modal-newsletter__close">X</span>
+      <h3 class="modal-newsletter__title">Inscription réussi</h3>
+      <p class="modal-newsletter__text">Félicitation, grâce a votre inscription, vous serez informé de toutes nos nouveautés en avant-première !<br>Vous recevrez votre code cadeau à préciser lors de votre première commande directement sur votre Email : <span class="modal-newsletter__text--highlight"><%= newsletterEmail %></span></p>
+    </div>
+  </div>
+  <% } %>
 
 <!-- Footer -->
 <%- include('layouts/footer'); -%>
