@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Homepage ROOT
+// information ROOT
 router.get('/', (req, res) => {
   res.render('information');
 });

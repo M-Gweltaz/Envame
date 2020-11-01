@@ -137,7 +137,6 @@ $breakpoints: (
   &__menu {
     @include flexbox(space-around, center);
     @include box-sizing(60vw, 15vh);
-    font-size: bold;
     list-style: none;
 
     @include laptop-only {
@@ -305,13 +304,7 @@ $breakpoints: (
   @include box-sizing(100vw, 80vh);
   max-width: 100%;
   @include flexbox();
-  position: absolute;
-  top: 15vh;
-  left: 0;
-  right: 0;
-  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  transition-duration: 1.2s;
-  transition-property: opacity, transform;
+  margin-top: 20vh;
 
   &__pictures {
     margin: auto;
@@ -375,36 +368,10 @@ $breakpoints: (
       text-transform: uppercase;
       letter-spacing: 0.1rem;
       margin: 3vh;
-      padding: 1 2vh;
+      padding: 1vh 2vh;
       z-index: 2;
     }
   }
-}
-
-.landing-page__space-creator {
-  width: 7.5vw;
-  height: 5vh;
-  padding: 15vh;
-  margin: auto;
-}
-
-.landing-page-push-effect {
-  transform: translateY(-100%) scale(0.9);
-  opacity: 0;
-}
-
-.container {
-  transition-delay: 0.2s;
-  transform: translateY(20%);
-  margin-top: 15vh;
-  opacity: 0;
-  transition-property: opacity, transform;
-  transition-duration: 0.8s;
-}
-
-.next-content-pull-effect {
-  opacity: 1;
-  transform: translateY(0%);
 }
 
 // 4 commercials
@@ -421,24 +388,22 @@ $breakpoints: (
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    background: url(../assets/pictures/quote.svg) center no-repeat;
-    width: 50vw;
-    height: 30vh;
-    opacity: 0.2;
-    filter: blur(1.5px);
+    background: url(../assets/pictures/model-bg.webp) center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    z-index: -2;
   }
 
-  &::after {
+  &::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    right: 0;
-    background: url(../assets/pictures/reversed-quote.svg) center no-repeat;
-    width: 50vw;
-    height: 30vh;
-    opacity: 0.3;
-    filter: blur(1.5px);
+    top: 0;
+    background-color: #f4f7f8;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
   }
 
   &__1 {
@@ -522,9 +487,9 @@ $breakpoints: (
   &::before {
     content: '';
     position: absolute;
-    background: url(../assets/pictures/wave.svg);
-    top: -4.8vh;
-    left: 0;
+    background: url(../assets/pictures/triangle.svg) no-repeat center;
+    top: -1.2vh;
+    left: 0vh;
     width: 100vw;
     height: 5vh;
   }
@@ -532,8 +497,8 @@ $breakpoints: (
   &::after {
     content: '';
     position: absolute;
-    background: url(../assets/pictures/reversed-wave.svg);
-    bottom: -4.8vh;
+    background: url(../assets/pictures/reversed-triangle.svg) no-repeat center;
+    bottom: -3.8vh;
     left: 0;
     width: 100vw;
     height: 5vh;
@@ -631,9 +596,9 @@ $breakpoints: (
   &::before {
     content: '';
     position: absolute;
-    background: url(../assets/pictures/wave.svg);
-    top: -4.8vh;
-    left: 0;
+    background: url(../assets/pictures/triangle.svg) no-repeat center;
+    top: -1.2vh;
+    left: 0vh;
     width: 100vw;
     height: 5vh;
   }
@@ -641,8 +606,8 @@ $breakpoints: (
   &::after {
     content: '';
     position: absolute;
-    background: url(../assets/pictures/reversed-wave.svg);
-    bottom: -4.8vh;
+    background: url(../assets/pictures/reversed-triangle.svg) no-repeat center;
+    bottom: -3.8vh;
     left: 0;
     width: 100vw;
     height: 5vh;
@@ -739,18 +704,6 @@ $breakpoints: (
     position: relative;
     padding: 3vh 0;
     margin: 5vh 0;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: url(../assets/pictures/pink-bg-unplash.webp);
-      background-size: cover;
-      filter: blur(pixelToRem(3));
-      opacity: 0.3;
-    }
   }
 
   &__clip {
@@ -790,6 +743,10 @@ $breakpoints: (
     @include tablet-only {
       width: 80vw;
     }
+
+    &--nobreak {
+      white-space: nowrap;
+    }
   }
 
   &__Btn {
@@ -801,7 +758,7 @@ $breakpoints: (
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     margin: 3vh 3vh 6vh 3vh;
-    padding: 1 2vh;
+    padding: 1vh 2vh;
   }
 }
 
@@ -814,9 +771,9 @@ $breakpoints: (
   &::before {
     content: '';
     position: absolute;
-    background: url(../assets/pictures/wave.svg);
-    top: -4.8vh;
-    left: 0;
+    background: url(../assets/pictures/triangle.svg) no-repeat center;
+    top: -1.2vh;
+    left: 0vh;
     width: 100vw;
     height: 5vh;
   }
@@ -824,8 +781,8 @@ $breakpoints: (
   &::after {
     content: '';
     position: absolute;
-    background: url(../assets/pictures/reversed-wave.svg);
-    bottom: -4.8vh;
+    background: url(../assets/pictures/reversed-triangle.svg) no-repeat center;
+    bottom: -3.8vh;
     left: 0;
     width: 100vw;
     height: 5vh;
@@ -906,7 +863,7 @@ $breakpoints: (
 // Selling point
 .selling__bg-picture {
   @include flexbox(space-around);
-  margin: 3vh 0;
+  margin: 0 0 3vh 0;
   position: relative;
 
   &::before {
@@ -953,9 +910,9 @@ $breakpoints: (
     position: relative;
 
     &:before {
-      content: '♥';
+      content: '*';
       position: absolute;
-      top: pixelToRem(0);
+      top: pixelToRem(8);
       left: pixelToRem(-10);
       font-size: map-get($font-size, title);
       color: map-get($color-palette, primary);
@@ -1011,6 +968,10 @@ $breakpoints: (
   margin: auto;
   margin-bottom: 5vh;
 
+  &__text--highlight {
+    font-weight: bold;
+  }
+
   &__form {
     @include flexbox(space-around, center);
     width: 100%;
@@ -1037,7 +998,7 @@ $breakpoints: (
       font-size: map-get($font-size, buy-Btn);
 
       @include tablet-only {
-        @include box-sizing(70vw, 7.5vh);
+        @include box-sizing(90vw, 7.5vh);
       }
     }
   }
@@ -1050,11 +1011,11 @@ $breakpoints: (
     margin-top: 3vh;
 
     @include tablet-only {
-      width: 50vw;
+      width: 90vw;
     }
 
-    @include smartphone-only {
-      width: 60vw;
+    @include tablet-only {
+      font-size: map-get($font-size, main);
     }
   }
 
@@ -1087,6 +1048,7 @@ $breakpoints: (
   min-height: 30vh;
   background-color: map-get($color-palette, secondary);
   box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+  position: relative;
 
   @include tablet-only {
     flex-direction: column;
@@ -1158,6 +1120,16 @@ $breakpoints: (
     width: 7.5vh;
     margin: auto;
   }
+
+  &__copyright {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 4vh;
+    color: map-get($color-palette, tertiary);
+    font-size: map-get($font-size, small);
+    text-align: center;
+  }
 }
 
 // information  page
@@ -1181,6 +1153,84 @@ $breakpoints: (
 
   &__item {
     padding: 1vh;
+  }
+}
+
+// unsusbscribe page
+.unsubscribe {
+  @include flexbox(space-around, center, column);
+  width: 70vw;
+  min-height: 70vh;
+  padding: 3vh 0;
+  margin: auto;
+
+  @include tablet-only {
+    width: 90vw;
+  }
+
+  &--success {
+    margin: auto;
+    padding: 1vh;
+    color: #bdff7d;
+    text-align: center;
+  }
+
+  &--failed {
+    margin: auto;
+    padding: 1vh;
+    color: map-get($color-palette, primary);
+    text-align: center;
+  }
+
+  &__title {
+    padding: 3vh 0;
+  }
+
+  &__form {
+    @include flexbox(space-around, center);
+    width: 100%;
+    padding: 3vh 0;
+
+    @include tablet-only {
+      flex-direction: column;
+    }
+  }
+
+  &__email {
+    @include flexbox(start, start, column);
+
+    &--label {
+      font-size: map-get($font-size, small);
+      padding: 1vh 0;
+    }
+
+    &--input {
+      @include box-sizing(30vw, 7.5vh);
+      background-color: rgba(245, 198, 204, 0.39);
+      box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+      border: none;
+      font-size: map-get($font-size, buy-Btn);
+
+      @include tablet-only {
+        @include box-sizing(90vw, 7.5vh);
+      }
+    }
+  }
+
+  &__btn {
+    @include button(primary, neutral);
+    @include flexbox();
+    font-size: map-get($font-size, highlight);
+    text-transform: uppercase;
+    margin-top: 3vh;
+
+    @include tablet-only {
+      width: 90vw;
+    }
+
+    @include tablet-only {
+      font-size: map-get($font-size, main);
+    }
   }
 }
 
@@ -1268,7 +1318,13 @@ $breakpoints: (
   color: map-get($color-palette, primary);
   box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
   border-radius: pixelToRem(25);
+  transform: translate(150%, 100%);
+  transition: all 0.3s ease-in-out;
   z-index: 3;
+
+  &--active {
+    transform: translate(0%, 0%);
+  }
 
   @include laptop-only {
     width: 60vw;
@@ -1286,12 +1342,14 @@ $breakpoints: (
     height: 100vh;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    transition: visibility 0s, opacity 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
     z-index: 2;
 
-    &--hidden {
-      visibility: hidden;
-      opacity: 0;
+    &--active {
+      visibility: visible;
+      opacity: 1;
     }
   }
 
