@@ -5,7 +5,7 @@
 
 // color scheme
 $color-palette: (
-  primary: #ff4e53,
+  primary: #3898ef,
   secondary: #2f2f2f,
   tertiary: #c4c4c4,
   neutral: #fff,
@@ -237,10 +237,6 @@ $breakpoints: (
     @include flexbox(center, center, column);
     cursor: pointer;
     transition: all 0.5s ease-in-out;
-
-    &:hover {
-      transform: rotate(180deg);
-    }
   }
 
   @include xs-phone-only {
@@ -348,6 +344,10 @@ $breakpoints: (
     text-align: center;
     font-size: map-get($font-size, highlight);
     padding: 1vh;
+
+    @include tablet-only {
+      order: -1;
+    }
 
     &--highlight {
       font-weight: bold;
@@ -912,7 +912,7 @@ $breakpoints: (
     &:before {
       content: '*';
       position: absolute;
-      top: pixelToRem(8);
+      top: pixelToRem(9);
       left: pixelToRem(-10);
       font-size: map-get($font-size, title);
       color: map-get($color-palette, primary);
@@ -992,7 +992,7 @@ $breakpoints: (
 
     &--input {
       @include box-sizing(30vw, 7.5vh);
-      background-color: rgba(245, 198, 204, 0.39);
+      background-color: rgba(56, 152, 239, 0.09);
       box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
       border: none;
       font-size: map-get($font-size, buy-Btn);
@@ -1206,7 +1206,7 @@ $breakpoints: (
 
     &--input {
       @include box-sizing(30vw, 7.5vh);
-      background-color: rgba(245, 198, 204, 0.39);
+      background-color: rgba(56, 152, 239, 0.09);
       box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
       border: none;
       font-size: map-get($font-size, buy-Btn);
@@ -1230,6 +1230,41 @@ $breakpoints: (
 
     @include tablet-only {
       font-size: map-get($font-size, main);
+    }
+  }
+}
+
+// policy Style
+.policy-text {
+  width: 70vw;
+  padding: 2vh 0;
+  margin: auto;
+
+  @include tablet-only {
+    width: 80vw;
+  }
+
+  &-highlight {
+    font-weight: bold;
+  }
+
+  &-lastp {
+    margin-bottom: 5vh;
+  }
+
+  // CGV page
+  &_paiement {
+    list-style-type: none;
+    padding: 2vh;
+    position: relative;
+
+    &:before {
+      content: '*';
+      position: absolute;
+      top: pixelToRem(10);
+      left: pixelToRem(-10);
+      font-size: map-get($font-size, title);
+      color: map-get($color-palette, primary);
     }
   }
 }

@@ -41,9 +41,21 @@ app.listen(
 const homepagePath = require('./routes/homepage.js');
 app.use('/', homepagePath);
 
+// Contact
+const contactPath = require('./routes/contact.js');
+app.use('/contact', contactPath);
+
 // Authentification
 const userAuthPath = require('./routes/user/auth.js');
 app.use('/user/auth', userAuthPath);
+
+// CGV
+const cgvPath = require('./routes/cgv.js');
+app.use('/CGV', cgvPath);
+
+// Privacy policy
+const privacyPolPath = require('./routes/privacy-policy.js');
+app.use('/privacy-policy', privacyPolPath);
 
 // further-information
 const infosPath = require('./routes/information.js');

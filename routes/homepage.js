@@ -206,7 +206,7 @@ router.post('/newsletter', async (req, res) => {
                           <br />
                           <br class="em_hide" />Dans la période actuelle, il n'est plus aussi simple de se rendre dans son institut de beauté préféré pour recevoir ses soins favoris.
                           <br />
-                          <br />N'attendez plus et obtenez tout de suite votre SPA2.0 en pré commande au prix de 130 € seulement jusqu'au 30 octobre.
+                          <br />N'attendez plus et obtenez tout de suite votre SPA2.0 en pré commande au prix de 130 € seulement jusqu'au 15 novembre.
                           <br />
                           <br />Bénéficier en cadeau d'un MUST HAVE : 1 lot de 7 masques tissus éco-luxe coup d'éclat/hydratant.
                           <nobr>Offert avec votre code:</nobr>
@@ -398,8 +398,12 @@ router.put('/newsletter_unsubscribe', async (req, res) => {
 
   if(regex.test(data.userEmail)) {
     try {
-      const deletedNewsletter = await Newsletter.findOneAndDelete({email: data.userEmail })
-      deleteResult = 'success'
+      if(Newsletter.findOneAndDelete({email: data.userEmail })){
+        const deletedNewsletter = await Newsletter.deleteOne({email: data.userEmail })
+        deleteResult = 'success'
+      }else {
+        deleteResult = 'failed'
+      }
     } catch (error) {
       deleteResult = 'failed'
     }

@@ -27,6 +27,9 @@ const newsletterUnsubscribe = () => {
         case "failed":
           unsubscribeStatus.innerHTML = `<p class="unsubscribe--failed">Votre e-mail n'est pas abonné a notre newsletter</p>`
           break
+        case "error":
+          unsubscribeStatus.innerHTML = `<p class="unsubscribe--failed">Une erreur technique est survenue, veuillez réessayer plus tard</p>`
+          break
         case "badInput":
           unsubscribeStatus.innerHTML = `<p class="unsubscribe--failed">Veuillez remplir un e-mail valide</p>`
           break

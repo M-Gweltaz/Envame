@@ -116,13 +116,13 @@
 }
 
 .navbar__links:hover {
-  color: #ff4e53;
+  color: #3898ef;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .navbar__links:active, .navbar__links:focus {
-  color: #ff4e53;
+  color: #3898ef;
 }
 
 @media screen and (max-width: 800px) {
@@ -132,12 +132,12 @@
     font-weight: bold;
   }
   .navbar__links:hover {
-    color: #ff4e53;
+    color: #3898ef;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
   .navbar__links:active, .navbar__links:focus {
-    color: #ff4e53;
+    color: #3898ef;
   }
 }
 
@@ -145,8 +145,8 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: 1vw 2vw;
-  border: 0.2rem solid #ff4e53;
-  background-color: #ff4e53;
+  border: 0.2rem solid #3898ef;
+  background-color: #3898ef;
   color: #fff;
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem #000;
           box-shadow: 0 0 0.3125rem -0.125rem #000;
@@ -154,14 +154,14 @@
 
 .navbar__links--buy:hover {
   background-color: #fff;
-  color: #ff4e53;
+  color: #3898ef;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .navbar__links--buy:active, .navbar__links--buy:focus {
-  border-color: #ff0209;
-  color: #ff0209;
+  border-color: #1072ca;
+  color: #1072ca;
   background-color: #fff;
 }
 
@@ -202,10 +202,6 @@
     cursor: pointer;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-  }
-  .hamburger-btn:hover {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
   }
 }
 
@@ -383,6 +379,14 @@
   padding: 1vh;
 }
 
+@media screen and (max-width: 800px) {
+  .landing-page__advertising {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+  }
+}
+
 .landing-page__advertising--highlight {
   font-weight: bold;
   font-size: 1.3rem;
@@ -396,14 +400,14 @@
   .landing-page__btn {
     display: block;
     cursor: pointer;
-    background-color: #ff4e53;
+    background-color: #3898ef;
     color: #fff;
     border-radius: 3.125rem;
     -webkit-box-shadow: 0 0 0.3125rem -0.125rem #000;
             box-shadow: 0 0 0.3125rem -0.125rem #000;
     font-size: 1.5rem;
     padding: 1vw 2vw;
-    border: 0.2rem solid #ff4e53;
+    border: 0.2rem solid #3898ef;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -428,14 +432,14 @@
   }
   .landing-page__btn:hover {
     background-color: #fff;
-    border-color: #ff4e53;
-    color: #ff4e53;
+    border-color: #3898ef;
+    color: #3898ef;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
   .landing-page__btn:active {
-    border-color: #ff0209;
-    color: #ff0209;
+    border-color: #1072ca;
+    color: #1072ca;
   }
 }
 
@@ -624,7 +628,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #ff4e53;
+  background-color: #3898ef;
   width: 100vw;
   max-width: 100%;
 }
@@ -649,7 +653,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   position: relative;
 }
@@ -713,7 +717,7 @@
 }
 
 .title-pink {
-  color: #ff4e53;
+  color: #3898ef;
   font-size: 2rem;
   text-align: center;
   padding: 3vh 1vh;
@@ -800,7 +804,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   padding: 5vh;
   position: relative;
@@ -1032,14 +1036,14 @@
 
 .buying-add__Btn {
   cursor: pointer;
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   border-radius: 3.125rem;
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem #000;
           box-shadow: 0 0 0.3125rem -0.125rem #000;
   font-size: 1.5rem;
   padding: 1vw 2vw;
-  border: 0.2rem solid #ff4e53;
+  border: 0.2rem solid #3898ef;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1064,19 +1068,19 @@
 
 .buying-add__Btn:hover {
   background-color: #fff;
-  border-color: #ff4e53;
-  color: #ff4e53;
+  border-color: #3898ef;
+  color: #3898ef;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .buying-add__Btn:active {
-  border-color: #ff0209;
-  color: #ff0209;
+  border-color: #1072ca;
+  color: #1072ca;
 }
 
 .user-manual {
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   position: relative;
 }
@@ -1207,7 +1211,7 @@
   left: -2rem;
   top: -0.3em;
   background-color: #fff;
-  color: #ff4e53;
+  color: #3898ef;
   border: 0.1875rem solid #d9d9d9;
   border-radius: 50%;
   width: 1.875rem;
@@ -1303,10 +1307,10 @@
 .selling-advantages__text:before {
   content: '*';
   position: absolute;
-  top: 0.5rem;
+  top: 0.5625rem;
   left: -0.625rem;
   font-size: 2rem;
-  color: #ff4e53;
+  color: #3898ef;
 }
 
 .selling-info {
@@ -1357,14 +1361,14 @@
 
 .selling-info__Btn {
   cursor: pointer;
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   border-radius: 3.125rem;
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem #000;
           box-shadow: 0 0 0.3125rem -0.125rem #000;
   font-size: 1.5rem;
   padding: 1vw 2vw;
-  border: 0.2rem solid #ff4e53;
+  border: 0.2rem solid #3898ef;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1387,15 +1391,15 @@
 
 .selling-info__Btn:hover {
   background-color: #fff;
-  border-color: #ff4e53;
-  color: #ff4e53;
+  border-color: #3898ef;
+  color: #3898ef;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .selling-info__Btn:active {
-  border-color: #ff0209;
-  color: #ff0209;
+  border-color: #1072ca;
+  color: #1072ca;
 }
 
 .newsletter {
@@ -1471,7 +1475,7 @@
 .newsletter__email--input {
   width: 30vw;
   height: 7.5vh;
-  background-color: rgba(245, 198, 204, 0.39);
+  background-color: rgba(56, 152, 239, 0.09);
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem;
           box-shadow: 0 0 0.3125rem -0.125rem;
   border: none;
@@ -1487,14 +1491,14 @@
 
 .newsletter__btn {
   cursor: pointer;
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   border-radius: 3.125rem;
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem #000;
           box-shadow: 0 0 0.3125rem -0.125rem #000;
   font-size: 1.5rem;
   padding: 1vw 2vw;
-  border: 0.2rem solid #ff4e53;
+  border: 0.2rem solid #3898ef;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1515,15 +1519,15 @@
 
 .newsletter__btn:hover {
   background-color: #fff;
-  border-color: #ff4e53;
-  color: #ff4e53;
+  border-color: #3898ef;
+  color: #3898ef;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .newsletter__btn:active {
-  border-color: #ff0209;
-  color: #ff0209;
+  border-color: #1072ca;
+  color: #1072ca;
 }
 
 @media screen and (max-width: 800px) {
@@ -1814,7 +1818,7 @@
 .unsubscribe--failed {
   margin: auto;
   padding: 1vh;
-  color: #ff4e53;
+  color: #3898ef;
   text-align: center;
 }
 
@@ -1872,7 +1876,7 @@
 .unsubscribe__email--input {
   width: 30vw;
   height: 7.5vh;
-  background-color: rgba(245, 198, 204, 0.39);
+  background-color: rgba(56, 152, 239, 0.09);
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem;
           box-shadow: 0 0 0.3125rem -0.125rem;
   border: none;
@@ -1888,14 +1892,14 @@
 
 .unsubscribe__btn {
   cursor: pointer;
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   border-radius: 3.125rem;
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem #000;
           box-shadow: 0 0 0.3125rem -0.125rem #000;
   font-size: 1.5rem;
   padding: 1vw 2vw;
-  border: 0.2rem solid #ff4e53;
+  border: 0.2rem solid #3898ef;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1916,15 +1920,15 @@
 
 .unsubscribe__btn:hover {
   background-color: #fff;
-  border-color: #ff4e53;
-  color: #ff4e53;
+  border-color: #3898ef;
+  color: #3898ef;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .unsubscribe__btn:active {
-  border-color: #ff0209;
-  color: #ff0209;
+  border-color: #1072ca;
+  color: #1072ca;
 }
 
 @media screen and (max-width: 800px) {
@@ -1937,6 +1941,41 @@
   .unsubscribe__btn {
     font-size: 1.1rem;
   }
+}
+
+.policy-text {
+  width: 70vw;
+  padding: 2vh 0;
+  margin: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .policy-text {
+    width: 80vw;
+  }
+}
+
+.policy-text-highlight {
+  font-weight: bold;
+}
+
+.policy-text-lastp {
+  margin-bottom: 5vh;
+}
+
+.policy-text_paiement {
+  list-style-type: none;
+  padding: 2vh;
+  position: relative;
+}
+
+.policy-text_paiement:before {
+  content: '*';
+  position: absolute;
+  top: 0.625rem;
+  left: -0.625rem;
+  font-size: 2rem;
+  color: #3898ef;
 }
 
 .modal {
@@ -2026,7 +2065,7 @@
 }
 
 .modal__title {
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   width: 100%;
   padding: 5vh 2vh;
@@ -2042,7 +2081,7 @@
   padding: 0vh 2vh 2vh 5vh;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #ff4e53;
+  color: #3898ef;
   word-break: break-all;
 }
 
@@ -2063,7 +2102,7 @@
           flex-direction: column;
   width: 40vw;
   background-color: #fff;
-  color: #ff4e53;
+  color: #3898ef;
   -webkit-box-shadow: 0 0 0.3125rem -0.125rem;
           box-shadow: 0 0 0.3125rem -0.125rem;
   border-radius: 1.5625rem;
@@ -2133,7 +2172,7 @@
 }
 
 .modal-newsletter__title {
-  background-color: #ff4e53;
+  background-color: #3898ef;
   color: #fff;
   width: 100%;
   padding: 5vh 2vh;
@@ -2149,6 +2188,6 @@
 
 .modal-newsletter__text--highlight {
   font-weight: bold;
-  color: #ff4e53;
+  color: #3898ef;
 }
 /*# sourceMappingURL=style.css.map */
