@@ -121,6 +121,10 @@ $breakpoints: (
   max-width: 100%;
 }
 
+// no Br
+.nobreak {
+  white-space: nowrap;
+}
 // Navbar
 .navbar {
   @include flexbox(space-around, center);
@@ -743,10 +747,6 @@ $breakpoints: (
     @include tablet-only {
       width: 80vw;
     }
-
-    &--nobreak {
-      white-space: nowrap;
-    }
   }
 
   &__Btn {
@@ -1031,7 +1031,7 @@ $breakpoints: (
         @include box-sizing(7.5vw, 7.5vh);
       }
 
-      @include smartphone-only() {
+      @include smartphone-only {
         @include box-sizing(15vw, 15vh);
       }
     }
@@ -1244,16 +1244,16 @@ $breakpoints: (
     width: 80vw;
   }
 
-  &-highlight {
+  &--highlight {
     font-weight: bold;
   }
 
-  &-lastp {
+  &--lastp {
     margin-bottom: 5vh;
   }
 
   // CGV page
-  &_paiement {
+  &__paiement {
     list-style-type: none;
     padding: 2vh;
     position: relative;
@@ -1265,6 +1265,192 @@ $breakpoints: (
       left: pixelToRem(-10);
       font-size: map-get($font-size, title);
       color: map-get($color-palette, primary);
+    }
+  }
+}
+
+// contact page
+.contact-container {
+  @include flexbox(space-around, center, row-reverse);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../assets/pictures/contact-bg.jpg) no-repeat center center;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: -1;
+  }
+
+  @include tablet-only {
+    flex-direction: column;
+    padding: 2.5vh;
+  }
+}
+
+.contact {
+  padding: 2.5vh 5vw 2.5vh 5vw;
+  width: 60vw;
+  background-color: rgba(255, 255, 255, 0.7);
+
+  @include tablet-only {
+    width: 80vw;
+  }
+
+  &__title {
+    font-size: map-get($font-size, buy-Btn);
+    color: map-get($color-palette, primary);
+    grid-column: 1/3;
+    text-align: center;
+    padding-bottom: 2.5vh;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2.5%;
+    grid-row-gap: 2.5%;
+    height: 70vh;
+
+    @include tablet-only {
+      grid-template-columns: 1fr;
+      height: 100vh;
+    }
+
+    @include smartphone-only {
+      grid-template-columns: 1fr;
+      height: 125vh;
+    }
+  }
+}
+
+// form grid layout
+.contact__first-name {
+  @include flexbox(space-around, start, column);
+  grid-column: 1/2;
+
+  @include tablet-only {
+    grid-column: 1/3;
+  }
+
+  &--input {
+    height: pixelToRem(35);
+    width: pixelToRem(250);
+    background-color: rgba(56, 152, 239, 0.09);
+    box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+    border: none;
+    font-size: map-get($font-size, buy-Btn);
+  }
+}
+
+.contact__last-name {
+  @include flexbox(space-around, start, column);
+  grid-column: 2/3;
+
+  @include tablet-only {
+    grid-column: 1/3;
+  }
+
+  &--input {
+    height: pixelToRem(35);
+    width: pixelToRem(250);
+    background-color: rgba(56, 152, 239, 0.09);
+    box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+    border: none;
+    font-size: map-get($font-size, buy-Btn);
+  }
+}
+
+.contact__email {
+  @include flexbox(space-around, start, column);
+  grid-column: 1/3;
+
+  &--input {
+    height: pixelToRem(35);
+    width: pixelToRem(400);
+    background-color: rgba(56, 152, 239, 0.09);
+    box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+    border: none;
+    font-size: map-get($font-size, buy-Btn);
+  }
+}
+
+.contact__phone {
+  @include flexbox(space-around, start, column);
+  grid-column: 1/3;
+
+  &--input {
+    height: pixelToRem(35);
+    width: pixelToRem(200);
+    background-color: rgba(56, 152, 239, 0.09);
+    box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+    border: none;
+    font-size: map-get($font-size, buy-Btn);
+  }
+}
+
+.contact__message {
+  @include flexbox(space-around, start, column);
+  grid-column: 1/3;
+
+  &--input {
+    width: 100%;
+    background-color: rgba(56, 152, 239, 0.09);
+    box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+    border: none;
+    font-size: map-get($font-size, buy-Btn);
+  }
+}
+
+.contact__btn {
+  @include button(primary, neutral);
+  @include flexbox();
+  grid-column: 1/3;
+  margin: auto;
+  width: 33vw;
+  font-size: map-get($font-size, highlight);
+  text-transform: uppercase;
+
+  @include tablet-only {
+    width: 90vw;
+  }
+
+  @include tablet-only {
+    font-size: map-get($font-size, main);
+  }
+}
+
+.info {
+  display: flex;
+  align-items: space-around;
+  flex-direction: column;
+  width: 40vw;
+  padding: 5vh 5vw 5vh 5vw;
+
+  @include tablet-only {
+    width: 90vw;
+  }
+
+  &__title {
+    @include flexbox(start, center);
+    font-size: map-get($font-size, hightlight);
+    font-weight: bold;
+    padding: 2vh;
+  }
+
+  &__text {
+    padding-left: pixelToRem(15);
+  }
+
+  &__data {
+    padding-bottom: 2vh;
+    padding-left: pixelToRem(50);
+
+    &--wordbreak {
+      word-break: break-all;
     }
   }
 }

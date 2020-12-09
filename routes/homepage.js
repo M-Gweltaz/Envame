@@ -200,17 +200,15 @@ router.post('/newsletter', async (req, res) => {
                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td class="em_greyA em_text3" align="center" valign="top" style="font-family:'DINCond', 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:20px; line-height:28px; color:#000;">
-                        <a href="https://envame.com" target="_blank" style="text-decoration:none; color:#000;"><span style="font-family:Arial, sans-serif; font-size:35px; line-height:50px; color:#ff4e53; text-transform:uppercase; max-width:600px;">Merci pour votre inscription</span>
+                        <a href="https://envame.com" target="_blank" style="text-decoration:none; color:#000;"><span style="font-family:Arial, sans-serif; font-size:35px; line-height:50px; color:#3898ef; text-transform:uppercase; max-width:600px;">Merci pour votre inscription</span>
                           <br />
                           <br />
                           <br />
                           <br class="em_hide" />Dans la période actuelle, il n'est plus aussi simple de se rendre dans son institut de beauté préféré pour recevoir ses soins favoris.
                           <br />
-                          <br />N'attendez plus et obtenez tout de suite votre SPA2.0 en pré commande au prix de 130 € seulement jusqu'au 15 novembre.
-                          <br />
                           <br />Bénéficier en cadeau d'un MUST HAVE : 1 lot de 7 masques tissus éco-luxe coup d'éclat/hydratant.
                           <nobr>Offert avec votre code:</nobr>
-                          <br /><span style="color:#ff4e53">ENVAMESPA2.0</span>
+                          <br /><span style="color:#3898ef">ENVAMESPA2.0</span>
                           <br />
                           <br />Avertissement :
                           <br class="em_hide"
@@ -222,9 +220,9 @@ router.post('/newsletter', async (req, res) => {
                     </tr>
                     <tr>
                       <td valign="top" align="center">
-                        <table align="center" border="0" cellspacing="0" cellpadding="0" style="border-radius:3px; background-color:#ff4e53;">
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" style="border-radius:3px; background-color:#3898ef;">
                           <tr>
-                            <td height="52" align="center" valign="middle" style="font-family:'DINCondensed', 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:15px; color:#ffffff; background-color:#ff4e53; font-weight:bold; text-transform:uppercase; text-decoration: none; height:52px; padding:0px 24px;">
+                            <td height="52" align="center" valign="middle" style="font-family:'DINCondensed', 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:15px; color:#ffffff; background-color:#3898ef; font-weight:bold; text-transform:uppercase; text-decoration: none; height:52px; padding:0px 24px;">
                               Pré-commander : <span style="color:#ffffff; text-decoration:none">envamepro@gmail.com</span>
                             </td>
                           </tr>
