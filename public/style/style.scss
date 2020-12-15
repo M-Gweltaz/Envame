@@ -11,6 +11,8 @@ $color-palette: (
   neutral: #fff,
   black: #000,
   brand: #333333,
+  success: #88ff00,
+  failed: #f00800,
 );
 
 // font size
@@ -79,6 +81,7 @@ $font-size: (
 
 // Media query breakpoint
 $breakpoints: (
+  biglaptop: 1200px,
   laptop: 1000px,
   tablet: 800px,
   smartphone: 600px,
@@ -86,6 +89,12 @@ $breakpoints: (
 );
 
 //responsive design
+@mixin biglaptop-only {
+  @media screen and (max-width: map-get($breakpoints, biglaptop)) {
+    @content;
+  }
+}
+
 @mixin laptop-only {
   @media screen and (max-width: map-get($breakpoints, laptop)) {
     @content;
@@ -968,6 +977,10 @@ $breakpoints: (
   margin: auto;
   margin-bottom: 5vh;
 
+  @include tablet-only {
+    // width: 90vw;
+  }
+
   &__text--highlight {
     font-weight: bold;
   }
@@ -984,21 +997,24 @@ $breakpoints: (
 
   &__email {
     @include flexbox(start, start, column);
+    position: relative;
 
     &--label {
-      font-size: map-get($font-size, small);
-      padding: 1vh 0;
+      font-weight: bold;
+      // font-size: map-get($font-size, small);
+      padding: pixelToRem(5) 0;
     }
 
     &--input {
-      @include box-sizing(30vw, 7.5vh);
+      width: 30vw;
+      height: pixelToRem(50);
       background-color: rgba(56, 152, 239, 0.09);
       box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
       border: none;
       font-size: map-get($font-size, buy-Btn);
 
       @include tablet-only {
-        @include box-sizing(90vw, 7.5vh);
+        width: 80vw;
       }
     }
   }
@@ -1008,13 +1024,10 @@ $breakpoints: (
     @include flexbox();
     font-size: map-get($font-size, highlight);
     text-transform: uppercase;
-    margin-top: 3vh;
 
     @include tablet-only {
       width: 90vw;
-    }
-
-    @include tablet-only {
+      margin-top: 3vh;
       font-size: map-get($font-size, main);
     }
   }
@@ -1028,17 +1041,68 @@ $breakpoints: (
       margin: 2vh;
 
       @include tablet-only {
-        @include box-sizing(7.5vw, 7.5vh);
+        width: pixelToRem(50);
+        height: pixelToRem(50);
       }
 
       @include smartphone-only {
-        @include box-sizing(15vw, 15vh);
+        width: pixelToRem(75);
+        height: pixelToRem(75);
+      }
+
+      @include xs-phone-only {
+        width: pixelToRem(100);
+        height: pixelToRem(100);
       }
     }
 
     &--text {
       font-size: map-get($font-size, small);
     }
+  }
+}
+
+// newsletter form validation
+.newsletter__checkicon {
+  position: absolute;
+  left: pixelToRem(-25);
+  top: pixelToRem(40);
+  visibility: hidden;
+}
+
+.newsletter__checkmessage {
+  font-size: map-get($font-size, small);
+  margin-top: pixelToRem(5);
+  visibility: hidden;
+}
+
+.newsletter--success {
+  :nth-child(2) {
+    border: pixelToRem(2) solid map-get($color-palette, success);
+  }
+
+  :nth-child(3) {
+    visibility: visible;
+    color: map-get($color-palette, neutral);
+    border-radius: pixelToRem(50);
+    background-color: map-get($color-palette, success);
+  }
+}
+
+.newsletter--failed {
+  :nth-child(2) {
+    border: pixelToRem(2) solid map-get($color-palette, failed);
+  }
+
+  :nth-child(4) {
+    visibility: visible;
+    color: map-get($color-palette, neutral);
+    border-radius: pixelToRem(50);
+    background-color: map-get($color-palette, failed);
+  }
+  :nth-child(5) {
+    visibility: visible;
+    color: map-get($color-palette, failed);
   }
 }
 
@@ -1069,6 +1133,10 @@ $breakpoints: (
     @include tablet-only {
       width: 70vw;
     }
+
+    @include smartphone-only {
+      width: 90vw;
+    }
   }
 
   &__contact {
@@ -1079,6 +1147,10 @@ $breakpoints: (
     @include tablet-only {
       width: 70vw;
     }
+
+    @include smartphone-only {
+      width: 90vw;
+    }
   }
 
   &__social {
@@ -1088,6 +1160,10 @@ $breakpoints: (
 
     @include tablet-only {
       width: 70vw;
+    }
+
+    @include smartphone-only {
+      width: 90vw;
     }
   }
 
@@ -1165,21 +1241,7 @@ $breakpoints: (
   margin: auto;
 
   @include tablet-only {
-    width: 90vw;
-  }
-
-  &--success {
-    margin: auto;
-    padding: 1vh;
-    color: #bdff7d;
-    text-align: center;
-  }
-
-  &--failed {
-    margin: auto;
-    padding: 1vh;
-    color: map-get($color-palette, primary);
-    text-align: center;
+    width: 80vw;
   }
 
   &__title {
@@ -1198,21 +1260,23 @@ $breakpoints: (
 
   &__email {
     @include flexbox(start, start, column);
+    position: relative;
 
     &--label {
       font-size: map-get($font-size, small);
-      padding: 1vh 0;
+      padding: pixelToRem(5) 0;
     }
 
     &--input {
-      @include box-sizing(30vw, 7.5vh);
+      width: 30vw;
+      height: pixelToRem(50);
       background-color: rgba(56, 152, 239, 0.09);
       box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
       border: none;
       font-size: map-get($font-size, buy-Btn);
 
       @include tablet-only {
-        @include box-sizing(90vw, 7.5vh);
+        width: 90vw;
       }
     }
   }
@@ -1222,15 +1286,38 @@ $breakpoints: (
     @include flexbox();
     font-size: map-get($font-size, highlight);
     text-transform: uppercase;
-    margin-top: 3vh;
 
     @include tablet-only {
       width: 90vw;
+      margin-top: 3vh;
     }
 
     @include tablet-only {
       font-size: map-get($font-size, main);
     }
+  }
+}
+
+.unsubscribe-modal {
+  position: fixed;
+  top: 50vh;
+  right: 5vw;
+  color: map-get($color-palette, neutral);
+  padding: pixelToRem(10) pixelToRem(20);
+  box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+  border-radius: pixelToRem(20);
+  transform: translateX(200%);
+  transition: all 0.3s ease-in-out;
+  z-index: 3;
+
+  &--success {
+    transform: translateX(0%);
+    background-color: map-get($color-palette, success);
+  }
+
+  &--failed {
+    transform: translateX(0%);
+    background-color: map-get($color-palette, failed);
   }
 }
 
@@ -1294,10 +1381,15 @@ $breakpoints: (
 .contact {
   padding: 2.5vh 5vw 2.5vh 5vw;
   width: 60vw;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
 
   @include tablet-only {
     width: 80vw;
+    box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+  }
+
+  @include smartphone-only {
+    width: 90vw;
   }
 
   &__title {
@@ -1323,6 +1415,8 @@ $breakpoints: (
     @include smartphone-only {
       grid-template-columns: 1fr;
       height: 125vh;
+      padding-left: pixelToRem(10);
+      padding-right: pixelToRem(10);
     }
   }
 }
@@ -1331,9 +1425,14 @@ $breakpoints: (
 .contact__first-name {
   @include flexbox(space-around, start, column);
   grid-column: 1/2;
+  position: relative;
 
-  @include tablet-only {
+  @include biglaptop-only {
     grid-column: 1/3;
+  }
+
+  &--label {
+    font-weight: bold;
   }
 
   &--input {
@@ -1342,16 +1441,20 @@ $breakpoints: (
     background-color: rgba(56, 152, 239, 0.09);
     box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
     border: none;
-    font-size: map-get($font-size, buy-Btn);
   }
 }
 
 .contact__last-name {
   @include flexbox(space-around, start, column);
   grid-column: 2/3;
+  position: relative;
 
-  @include tablet-only {
+  @include biglaptop-only {
     grid-column: 1/3;
+  }
+
+  &--label {
+    font-weight: bold;
   }
 
   &--input {
@@ -1360,13 +1463,17 @@ $breakpoints: (
     background-color: rgba(56, 152, 239, 0.09);
     box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
     border: none;
-    font-size: map-get($font-size, buy-Btn);
   }
 }
 
 .contact__email {
   @include flexbox(space-around, start, column);
   grid-column: 1/3;
+  position: relative;
+
+  &--label {
+    font-weight: bold;
+  }
 
   &--input {
     height: pixelToRem(35);
@@ -1374,13 +1481,17 @@ $breakpoints: (
     background-color: rgba(56, 152, 239, 0.09);
     box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
     border: none;
-    font-size: map-get($font-size, buy-Btn);
   }
 }
 
 .contact__phone {
   @include flexbox(space-around, start, column);
   grid-column: 1/3;
+  position: relative;
+
+  &--label {
+    font-weight: bold;
+  }
 
   &--input {
     height: pixelToRem(35);
@@ -1388,20 +1499,23 @@ $breakpoints: (
     background-color: rgba(56, 152, 239, 0.09);
     box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
     border: none;
-    font-size: map-get($font-size, buy-Btn);
   }
 }
 
 .contact__message {
   @include flexbox(space-around, start, column);
   grid-column: 1/3;
+  position: relative;
+
+  &--label {
+    font-weight: bold;
+  }
 
   &--input {
     width: 100%;
     background-color: rgba(56, 152, 239, 0.09);
     box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
     border: none;
-    font-size: map-get($font-size, buy-Btn);
   }
 }
 
@@ -1420,6 +1534,48 @@ $breakpoints: (
 
   @include tablet-only {
     font-size: map-get($font-size, main);
+  }
+}
+
+// contact form validation
+.contact__checkicon {
+  position: absolute;
+  left: pixelToRem(-25);
+  visibility: hidden;
+}
+
+.contact__checkmessage {
+  font-size: map-get($font-size, small);
+  visibility: hidden;
+}
+
+.contact--success {
+  :nth-child(2) {
+    border: pixelToRem(2) solid map-get($color-palette, success);
+  }
+
+  :nth-child(3) {
+    visibility: visible;
+    color: map-get($color-palette, neutral);
+    border-radius: pixelToRem(50);
+    background-color: map-get($color-palette, success);
+  }
+}
+
+.contact--failed {
+  :nth-child(2) {
+    border: pixelToRem(2) solid map-get($color-palette, failed);
+  }
+
+  :nth-child(4) {
+    visibility: visible;
+    color: map-get($color-palette, neutral);
+    border-radius: pixelToRem(50);
+    background-color: map-get($color-palette, failed);
+  }
+  :nth-child(5) {
+    visibility: visible;
+    color: map-get($color-palette, failed);
   }
 }
 
@@ -1455,6 +1611,30 @@ $breakpoints: (
   }
 }
 
+// contact modal
+.contact-form-modal {
+  position: fixed;
+  top: 50vh;
+  right: 5vw;
+  color: map-get($color-palette, neutral);
+  padding: pixelToRem(10) pixelToRem(20);
+  box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
+  border-radius: pixelToRem(20);
+  transform: translateX(200%);
+  transition: all 0.3s ease-in-out;
+  z-index: 3;
+
+  &--success {
+    transform: translateX(0%);
+    background-color: map-get($color-palette, success);
+  }
+
+  &--failed {
+    transform: translateX(0%);
+    background-color: map-get($color-palette, failed);
+  }
+}
+
 // modal buying pop up
 .modal {
   position: relative;
@@ -1464,7 +1644,7 @@ $breakpoints: (
   color: map-get($color-palette, black);
   box-shadow: 0 0 pixelToRem(5) pixelToRem(-2);
   border-radius: pixelToRem(25);
-  transform: translate(150%, 100%);
+  transform: translateY(pixelToRem);
   transition: all 0.3s ease-in-out;
   z-index: 3;
 

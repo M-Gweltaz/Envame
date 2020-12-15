@@ -8,23 +8,38 @@
     <form class="contact__form">
       <div class="contact__first-name">
         <label class="contact__first-name--label" for="firstname">Dites nous votre <span class="nobreak">prénom :</span></label>
-        <input class="contact__first-name--input" type="text" id="firstname" name="firstname" data-length="30" maxlength="30" required>
+        <input class="contact__first-name--input" type="text" id="firstname" name="firstname" data-length="30" minlength="2" maxlength="30" pattern="([-,A-Za-zÀ-ÿ. ']+[ ]*)+" required>
+        <i class="material-icons contact__checkicon">check</i>
+        <i class="material-icons contact__checkicon">clear</i>
+        <small class="contact__checkmessage">Error message</small>
       </div>
       <div class="contact__last-name">
         <label class="contact__last-name--label" for="lastname">Et votre <span class="nobreak">nom :</span></label>
-        <input class="contact__last-name--input" type="text" id="lastname" name="lastname" data-length="30" maxlength="30" required>
+        <input class="contact__last-name--input" type="text" id="lastname" name="lastname" data-length="30" minlength="2" maxlength="30" pattern="([-,A-Za-zÀ-ÿ. ']+[ ]*)+" required>
+        <i class="material-icons contact__checkicon">check</i>
+        <i class="material-icons contact__checkicon">clear</i>
+        <small class="contact__checkmessage">Error message</small>
       </div>
       <div class="contact__email">
         <label class="contact__email--label" for="email">Entrez votre <span class="nobreak">e-mail :</span></label>
         <input class="contact__email--input" type="email" id="email" name="email" data-length="50" maxlength="50" required>
+        <i class="material-icons contact__checkicon">check</i>
+        <i class="material-icons contact__checkicon">clear</i>
+        <small class="contact__checkmessage">Error message</small>
       </div>
       <div class="contact__phone">
         <label class="contact__phone--label" for="phone">Entrez votre numéro de <span class="nobreak">téléphone :</span></label>
-        <input class="contact__phone--input" type="tel" id="phone" name="phone" minlength="10" maxlength="15" pattern="^[0-9 +.()-]+$">
+        <input class="contact__phone--input" type="tel" id="phone" name="phone" minlength="10" maxlength="15" pattern="^[0-9 +.()-]+">
+        <i class="material-icons contact__checkicon">check</i>
+        <i class="material-icons contact__checkicon">clear</i>
+        <small class="contact__checkmessage">Error message</small>
       </div>
       <div class="contact__message">
         <label class="contact__message--label" for="message">Votre <span class="nobreak">message :</span></label>
-        <textarea class="contact__message--input" name="message" id="message" rows="3" cols="50"></textarea>
+        <textarea class="contact__message--input" name="message" id="message" rows="3" cols="50" maxlength="500"></textarea>
+        <i class="material-icons contact__checkicon">check</i>
+        <i class="material-icons contact__checkicon">clear</i>
+        <small class="contact__checkmessage">Error message</small>
       </div>
       <input class="contact__btn" type="submit" value="Envoyer">
     </form>
@@ -49,6 +64,8 @@
   </div>
 </div>
 
+<!-- contact form modal -->
+<div class="contact-form-modal"></div>
 
 <!-- buying modal -->
 <div class="modal__bg">
@@ -62,4 +79,6 @@
 
 <!-- Footer -->
 <%- include('layouts/footer'); -%>
+<script src="./frontjs/contact.js"></script>
+
 </body>

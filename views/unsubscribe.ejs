@@ -7,15 +7,21 @@
     <h2 class="title-pink">Merci de nous avoir suivi</h2>
   </div>
   <h3 class="unsubscribe__title">Pour se désabonner, rien de plus simple : renseigner votre e-mail</h3>
-  <p class="unsubscribe__status"></p>
+  <!-- <p class="unsubscribe__status"></p> -->
   <form class="unsubscribe__form">
     <div class="unsubscribe__email">
       <label class="unsubscribe__email--label" for="email"> Entrez votre e-mail :</label>
       <input class="unsubscribe__email--input" type="email" id="email" name="email" data-length="50" maxlength="50" required>
+      <i class="material-icons newsletter__checkicon">check</i>
+      <i class="material-icons newsletter__checkicon">clear</i>
+      <small class="newsletter__checkmessage">Error message</small>
     </div>
     <input class="unsubscribe__btn" type="submit" value="Se désabonner">
   </form>
 </div>
+
+<!-- unsubscribe modal -->
+<div class="unsubscribe-modal"></div>
 
 <!-- buying modal -->
 <div class="modal__bg">

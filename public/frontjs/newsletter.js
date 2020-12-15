@@ -3,11 +3,63 @@ const newsletterFormHandler =  () => {
   const newsletterForm = document.querySelector('.newsletter')
   const userEmail = document.querySelector('.newsletter__email--input')
 
+  userEmail.addEventListener('change', (e) => {
+    switch(true) {
+      case /^$/.test(userEmail.value.trim()): //removing all class if empty
+        const parentElementUserEmail = userEmail.parentElement
+        const errorTextUserEmail = parentElementUserEmail.querySelector('.newsletter__checkmessage')
+        if(parentElementUserEmail.classList.contains('newsletter--success')){
+          parentElementUserEmail.classList.remove('newsletter--success')
+        }
+        if(parentElementUserEmail.classList.contains('newsletter--failed')){
+          parentElementUserEmail.classList.remove('newsletter--failed')
+        }
+        errorTextUserEmail.textContent = ''
+        break
+
+      case /^[\w-\.À-ÿ]{2,40}@[\wÀ-ÿ]{2,25}\.[a-zA-Z]{2,4}$/i.test(userEmail.value.trim()):
+        setSuccessFor(userEmail);
+        break
+
+      default:
+      setErrorFor(userEmail, 'Veuillez renseigner une adresse email valide')
+    }  
+  })
+
+  // error handling
+  const setErrorFor = (input, message) => {
+    const parentElement = input.parentElement
+    const errorText = parentElement.querySelector('.newsletter__checkmessage')
+
+    // removing success class if present
+    if(parentElement.classList.contains('newsletter--success')){
+      parentElement.classList.remove('newsletter--success')
+    }
+    // adding failed class and failed message
+    parentElement.classList.add('newsletter--failed')
+    errorText.textContent = message
+  }
+
+  // success handling
+  const setSuccessFor = (input) => {
+    const parentElement = input.parentElement
+
+    // removing success class if present
+    if(parentElement.classList.contains('newsletter--failed')){
+      parentElement.classList.remove('newsletter--failed')
+    }
+    // adding failed class and failed message
+    parentElement.classList.add('newsletter--success')
+  }
+
   // sending email as JSON with fetch
   newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault()
+    
+    // data
     const newsletterEmail = userEmail.value
     
+    // fetch options
     const options = {
       method : 'POST',
       headers: {
@@ -37,7 +89,6 @@ const newsletterModal = (data) => {
   const modalText = document.querySelector('.modal-newsletter__text')
 
   // Sorting fetch responses with correct modal text
-  console.log(data)
   switch(data.status){
     case "success" :
       modalTitle.textContent = 'Inscription réussi'
@@ -75,4 +126,4 @@ const newsletterModal = (data) => {
   })  
 }
 
-newsletterFormHandler();
+newsletterFormHandler()
