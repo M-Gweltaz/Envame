@@ -2,6 +2,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const { body, validationResult } = require('express-validator');
+
 
 // Loading config env variablesnpm
 dotenv.config({ path: './config/config.env' });

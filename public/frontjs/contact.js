@@ -182,10 +182,8 @@ const contactFormHandler = () => {
         try{
           const response = await fetch('/contact/form', options)
           const data = await response.json()
-          console.log(data)
           contactModal(data)
         } catch (err) {
-          console.log(err)
           serverErr = {status : "serverIssues"}
           contactModal(serverErr)
         }

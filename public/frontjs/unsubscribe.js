@@ -77,8 +77,8 @@ const newsletterUnsubscribe = () => {
           break
         case "failed":
           unsubscribeModal.textContent = `Votre e-mail n'est pas abonné a notre newsletter`
-          setTimeout(() => {unsubscribeModal.add('unsubscribe-modal--failed')}, 0);
-          setTimeout(() => {unsubscribeModal.remove('unsubscribe-modal--failed')}, 3000);
+          setTimeout(() => {unsubscribeModal.classList.add('unsubscribe-modal--failed')}, 0);
+          setTimeout(() => {unsubscribeModal.classList.remove('unsubscribe-modal--failed')}, 3000);
           break
         case "error":
           unsubscribeModal.textContent = `Une erreur technique est survenue, veuillez réessayer plus tard`
@@ -86,9 +86,9 @@ const newsletterUnsubscribe = () => {
           setTimeout(() => {unsubscribeModal.classList.remove('unsubscribe-modal--failed')}, 3000);
           break
         case "badInput":
-          unsubscribeModal.textContent = `Veuillez remplir un e-mail valide`
-          setTimeout(() => {unsubscribeModal.add('unsubscribe-modal--failed')}, 0);
-          setTimeout(() => {unsubscribeModal.remove('unsubscribe-modal--failed')}, 3000);
+          unsubscribeModal.textContent = `Veuillez renseigner une adresse email valide`
+          setTimeout(() => {unsubscribeModal.classList.add('unsubscribe-modal--failed')}, 0);
+          setTimeout(() => {unsubscribeModal.classList.remove('unsubscribe-modal--failed')}, 3000);
           break
       }
     } catch (err){

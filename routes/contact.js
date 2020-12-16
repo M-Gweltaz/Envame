@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+const { body, validationResult } = require('express-validator');
+
 
 router.get('/', (req, res) => {
   res.render('contact')
@@ -61,18 +63,18 @@ router.post('/form', (req, res) => {
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: 'node9-fr.n0c.com',
-    port: 465,
-    secure: true, // true for 465, false for other ports (587)
+    host: 'smtp.laposte.net',
+    port: 587,
+    secure: false,
     auth: {
-      user: process.env.EMAIL_ID,
-      pass: process.env.EMAIL_PASSWORD, 
+      user: 'gweltaz.dev@laposte.net',
+      pass: 'TRbkxWTka$5wS!B!c7W8e!wF',
     },
   });
 
   // send mail with defined transport object
   let mailOption = {
-    from: '"Envame contact form" <contact@envame.com>',
+    from: '"Envame contact form" <gweltaz.dev@laposte.net>',
     to: process.env.EMAIL_CONTACT_RECEIVER, 
     subject: 'Contact form',
     text: 'Hello world?', 

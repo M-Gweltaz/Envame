@@ -73,8 +73,7 @@ const newsletterFormHandler =  () => {
       const data = await response.json()
       newsletterModal(data)
     } catch (err){
-      console.log(err)
-      serverErr = {status : "serverIssues"}
+      const serverErr = {status : "error"}
       newsletterModal(serverErr)
     }
   })
@@ -92,19 +91,23 @@ const newsletterModal = (data) => {
   switch(data.status){
     case "success" :
       modalTitle.textContent = 'Inscription réussi'
-      modalText.innerHTML = `Félicitation, grâce a votre inscription, vous serez informé de toutes nos nouveautés en avant-première !<br>Vous recevrez votre code cadeau à préciser lors de votre première commande directement sur votre Email : <span class="modal-newsletter__text--highlight">${data.userEmail}</span>`
+      modalText.innerHTML = `Félicitation, grâce a votre inscription, vous serez informé de toutes nos nouveautés et promotions en avant-première !<br>Vous recevrez votre code cadeau à préciser lors de votre première commande directement sur votre Email : <span class="modal-newsletter__text--highlight">${data.userEmail}</span>`
       break;
 
-    case "invalidEmail" :
-      modalTitle.textContent = 'Oups, e-mail invalide'
+    case "failed" :
+      modalTitle.textContent = 'Déjà inscrit'
+      modalText.innerHTML = `Vous êtes déjà inscrit à notre newsletter avec cette adresse e-mail ! Nous vous informerons de toutes nos nouveautés et promotions en avant-première`
+      break;
+
+    case "badInput" :
+      modalTitle.textContent = 'Adresse e-mail invalide'
       modalText.textContent = 'Veuillez renseigner une adresse e-mail valide pour être informé de tous nos bons plans et pour pouvoir bénéficier de votre code cadeau.'
       break;
 
-    case "serverIssues" : 
-      modalTitle.textContent = 'Oups, notre serveur est en maintenance'
+    case "error" : 
+      modalTitle.textContent = 'Serveur en maintenance'
       modalText.textContent = 'Pour des raisons techniques, notre serveur est actuellement en maintenance. Nous tenons à nous excuser pour la gêne occasionnée. Nous faisons tout notre possible pour rétablir cette fonctionnalité au plus vite.'
       break;
-
   }
 
   // modal poping
