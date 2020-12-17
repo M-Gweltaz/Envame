@@ -8,73 +8,74 @@ router.get('/', (req, res) => {
   res.render('contact')
 })
 
-router.post('/form', (req, res) => {
-  const data = req.body
-  let fetchResult 
+router.post('/form', [
+  // data sanitization and validation
+  body('firstName')
+    .trim()
+    .custom(firstName => {
+      if(/^([-,A-Za-zÀ-ÿ. ']+[ ]*){2,30}/.test(firstName)) { return true; }
+    })
+    .withMessage('Champ prénom invalide, veuillez réessayer'),
+  body('lastName')
+    .trim()
+    .custom(lastName => {
+      if(/^([-,A-Za-zÀ-ÿ. ']+[ ]*){2,30}/.test(lastName)) { return true; }
+    })
+    .withMessage('Champ nom invalide, veuillez réessayer'),
+  body('email')
+    .custom(email => {
+      if(/^[\w-\.À-ÿ]{2,40}@[\wÀ-ÿ]{2,25}\.[a-zA-Z]{2,4}$/.test(email)) { return true }
+    })
+    .withMessage('Champ email invalide, veuillez réessayer'),
+  body('smartphone')
+    .trim()
+    .custom(smartphone => {
+      if(/^([0-9 +.()-]{0,15})/.test(smartphone)) { return true; }
+    })
+    .withMessage('Champ téléphone invalide, veuillez réessayer'),
+  body('message')
+    .trim()
+    .custom(message => {
+      if(/^[-,A-Za-zÀ-ÿ. '!€:@]+$/.test(message)) { return true; }
+    })
+    .withMessage('Champ message invalide, veuillez réessayer')
+], (req, res) => {
+  let fetchResult // result of the request to be send as Json
 
-  // Sanitation of the data
-  const regexName = /^([-,A-Za-zÀ-ÿ. ']+[ ]*){2,30}/
-  const regexPhone = /^([0-9 +.()-]{0,15})/
-  const regexEmail = /^[\w-\.À-ÿ]{2,40}@[\wÀ-ÿ]{2,25}\.[a-zA-Z]{2,4}$/
-  const regexMessage = /^([^/{}[\]$]{0,500})/
+  // Finds the validation errors in this request and wraps them in an object with handy functions
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    fetchResult = 'badInput'
+    return res.status(400).json({ errors: errors.array(), fetchResult });
+  }
   
-  // checking data
-  if (!regexName.test(data.form.firstName)){
-    fetchResult = 'invalidFirstnameInput'
-    res.json({
-      status : fetchResult,
-    })
-  }
-  if (!regexName.test(data.form.lastName)){
-    fetchResult = 'invalidLastnameInput'
-    res.json({
-      status : fetchResult,
-    })
-  }
-  if (!regexEmail.test(data.form.email)){
-    fetchResult = 'invalidEmailInput'
-    res.json({
-      status : fetchResult,
-    })
-  }
-  if (!regexPhone.test(data.form.smartphone)){
-    fetchResult = 'invalidPhoneInput'
-    res.json({
-      status : fetchResult,
-    })
-  }
-
-  if (!regexMessage.test(data.form.Message)){
-    fetchResult = 'invalidMessageInput'
-    res.json({
-      status : fetchResult,
-    })
-  }
+  const data = req.body
+  
   // Data validated
   fetchResult = 'success'
 
   // mail input
-  const output = `<h1>Vous avez reçu un message de ${data.form.firstName} ${data.form.lastName}</h1>
+  const output = `<h1>Vous avez reçu un message de ${data.firstName} ${data.lastName}</h1>
   <h3>Son contact:</h3>
-  <p>email: ${data.form.email}</p>
-  <p>téléphone: ${data.form.smartphone}</p>
+  <p>email: ${data.email}</p>
+  <p>téléphone: ${data.phone}</p>
   <h3>Son message:</h3>
-  <p>${data.form.message}</p>`
+  <p>${data.message}</p>`
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: 'smtp.laposte.net',
-    port: 587,
-    secure: false,
+    host: 'node9-fr.n0c.com',
+    port: 465,
+    secure: true, // true for 465, false for other ports (587)
     auth: {
-      user: 'gweltaz.dev@laposte.net',
-      pass: 'TRbkxWTka$5wS!B!c7W8e!wF',
+      user: process.env.EMAIL_ID,
+      pass: process.env.EMAIL_PASSWORD, 
     },
   });
 
   // send mail with defined transport object
   let mailOption = {
-    from: '"Envame contact form" <gweltaz.dev@laposte.net>',
+    from: '"Envame contact form" <contact@envame.com>',
     to: process.env.EMAIL_CONTACT_RECEIVER, 
     subject: 'Contact form',
     text: 'Hello world?', 

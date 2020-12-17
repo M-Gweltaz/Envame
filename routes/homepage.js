@@ -14,8 +14,10 @@ router.get('/', (req, res) => {
 router.post('/newsletter', [
   // data sanitization and validation
   body('newsletterEmail')
-    .isEmail().withMessage('Veuillez renseigner un email valide')
-    .normalizeEmail()
+  .custom(newsletterEmail => {
+    if(/^[\w-\.À-ÿ]{2,40}@[\wÀ-ÿ]{2,25}\.[a-zA-Z]{2,4}$/.test(newsletterEmail)) { return true }
+  })
+  .withMessage('Veuillez renseigner un email valide')
 ], async (req, res) => {
   let fetchResult // result of the request to be send as Json
 
@@ -28,17 +30,7 @@ router.post('/newsletter', [
 
   const data = req.body
 
-  // Finding if user email is already in DB
-  // let isFound
-  // try {
-  //   let isFound = await Newsletter.find({ email: data.newsletterEmail })
-  // } catch (err) {
-  //   fetchResult = 'error'
-  //   res.status(500).json({ message: err.message, fetchResult })
-  // }
-
-  //  Saving user email to db
-
+  // finding if already saved in DB if not creating new entry
   try {
     const isFound = await Newsletter.find({ email: data.newsletterEmail })
     if(isFound != ''){
@@ -397,8 +389,10 @@ router.get('/newsletter_unsubscribe', (req, res) => {
 router.put('/newsletter_unsubscribe', [
   // data sanitization and validation
   body('userEmail')
-    .isEmail().withMessage('Veuillez renseigner un email valide')
-    .normalizeEmail()
+      .custom(userEmail => {
+        if(/^[\w-\.À-ÿ]{2,40}@[\wÀ-ÿ]{2,25}\.[a-zA-Z]{2,4}$/.test(userEmail)) { return true }
+      })
+      .withMessage('Veuillez renseigner un email valide')
 ], async (req, res) => {
   let deleteResult // result of the request to be send as Json
 

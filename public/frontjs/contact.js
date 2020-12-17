@@ -4,7 +4,7 @@ const contactFormHandler = () => {
   const contactFirstName = document.querySelector('.contact__first-name--input')
   const contactLastName = document.querySelector('.contact__last-name--input')
   const contactEmail = document.querySelector('.contact__email--input')
-  const contactSmartphone = document.querySelector('.contact__phone--input')
+  const contactPhone = document.querySelector('.contact__phone--input')
   const contactMessage = document.querySelector('.contact__message--input')
   const modal = document.querySelector('.contact-form-modal')
 
@@ -73,30 +73,30 @@ const contactFormHandler = () => {
   })
 
   // data validation on input
-  contactSmartphone.addEventListener('change', (e) => {
+  contactPhone.addEventListener('change', (e) => {
     switch(true) {
-      case /^$/.test(contactSmartphone.value.trim()):  //removing all class if empty
-        const parentElementSmartphone = contactSmartphone.parentElement
-        const errorTextSmartphone = parentElementSmartphone.querySelector('.contact__checkmessage')
-        if(parentElementSmartphone.classList.contains('contact--success')){
-          parentElementSmartphone.classList.remove('contact--success')
+      case /^$/.test(contactPhone.value.trim()):  //removing all class if empty
+        const parentElementPhone = contactPhone.parentElement
+        const errorTextPhone = parentElementPhone.querySelector('.contact__checkmessage')
+        if(parentElementPhone.classList.contains('contact--success')){
+          parentElementPhone.classList.remove('contact--success')
         }
-        if(parentElementSmartphone.classList.contains('contact--failed')){
-          parentElementSmartphone.classList.remove('contact--failed')
+        if(parentElementPhone.classList.contains('contact--failed')){
+          parentElementPhone.classList.remove('contact--failed')
         }
-        errorTextSmartphone.textContent = ''
+        errorTextPhone.textContent = ''
         break
 
-      case contactSmartphone.value.trim().length>15:
-        setErrorFor(contactSmartphone, 'Votre numéro est trop long')
+      case contactPhone.value.trim().length>15:
+        setErrorFor(contactPhone, 'Votre numéro est trop long')
           break
 
-      case /([^0-9 +.()-])/g.test(contactSmartphone.value.trim()):
-        setErrorFor(contactSmartphone, 'Veuillez renseigner un numéro valide')
+      case /([^0-9 +.()-])/g.test(contactPhone.value.trim()):
+        setErrorFor(contactPhone, 'Veuillez renseigner un numéro valide')
         break
 
-      case /^([0-9 +.()-]{0,15})$/.test(contactSmartphone.value.trim()):
-        setSuccessFor(contactSmartphone);
+      case /^([0-9 +.()-]{0,15})$/.test(contactPhone.value.trim()):
+        setSuccessFor(contactPhone);
         break
     }
   })
@@ -112,7 +112,7 @@ const contactFormHandler = () => {
         setErrorFor(contactMessage, `Votre message est trop long`)
         break
 
-      case /([^-,A-Za-zÀ-ÿ. '!€:])+/.test(contactMessage.value.trim()):
+      case /([^-,A-Za-zÀ-ÿ. '!€:@])+/.test(contactMessage.value.trim()):
         setErrorFor(contactMessage, `N'utiliser pas des caractères spéciaux`)
         break
 
@@ -151,14 +151,12 @@ const contactFormHandler = () => {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault()
 
-    // data
-    const form = {
-      firstName: contactFirstName.value,
-      lastName: contactLastName.value,
-      email: contactEmail.value,
-      smartphone: contactSmartphone.value,
-      message: contactMessage.value
-    }
+    // data to be send as Json
+    const firstName = contactFirstName.value
+    const lastName = contactLastName.value
+    const email = contactEmail.value
+    const phone = contactPhone.value
+    const message = contactMessage.value
 
     // data validation before submit
     switch(true) {
@@ -175,7 +173,7 @@ const contactFormHandler = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body : JSON.stringify({form})
+          body : JSON.stringify({ firstName, lastName, email, phone, message })
         }
 
         // Sending fetch request
@@ -201,34 +199,10 @@ const contactModal = (data) => {
       setTimeout(() => {modal.classList.remove('contact-form-modal--success')}, 3000);
       break;
 
-    case "invalidFirstnameInput":
-      modal.innerHTML ='Champ prénom invalide, veuillez réessayer'
-      setTimeout(() => {modal.classList.add('contact-form-modal--failed')}, 0);
-      setTimeout(() => {modal.classList.remove('contact-form-modal--failed')}, 3000);
-      break;
-
-    case "invalidLastnameInput":
-      modal.innerHTML ='Champ nom invalide, veuillez réessayer'
-      setTimeout(() => {modal.classList.add('contact-form-modal--failed')}, 0);
-      setTimeout(() => {modal.classList.remove('contact-form-modal--failed')}, 3000);
-      break;
-
-    case "invalidEmailInput":
-      modal.innerHTML =`Champ e-mail invalide, veuillez réessayer`
-      setTimeout(() => {modal.classList.add('contact-form-modal--failed')}, 0);
-      setTimeout(() => {modal.classList.remove('contact-form-modal--failed')}, 3000);
-      break;
-
-    case "invalidPhoneInput":
-      modal.innerHTML ='Champ téléphone invalide, veuillez réessayer'
-      setTimeout(() => {modal.classList.add('contact-form-modal--failed')}, 0);
-      setTimeout(() => {modal.classList.remove('contact-form-modal--failed')}, 3000);
-      break;
-
-    case "invalidMessageInput":
-      modal.innerHTML ='Champ message invalide, veuillez réessayer'
-      setTimeout(() => {modal.classList.add('contact-form-modal--failed')}, 0);
-      setTimeout(() => {modal.classList.remove('contact-form-modal--failed')}, 3000);
+    case "badInput":
+      modal.textContent = 'Un champ du formulaire est invalide, veuillez réessayer'
+      setTimeout(() => {modal.classList.add('contact-form-modal--success')}, 0);
+      setTimeout(() => {modal.classList.remove('contact-form-modal--success')}, 3000);
       break;
 
     case "serverIssues":
