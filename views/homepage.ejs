@@ -1,16 +1,23 @@
-<!-- Header + Navbar -->
+<!-- Header -->
 <%- include('layouts/header'); -%>
+  <!-- animation scrolling library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>Envame - SPA 2.0 : Masque éclat peau parfaite</title>
+</head>
+
+<!-- Navbar -->
+<%- include('layouts/navbar'); -%>
 
 <!-- LandingPage -->
 <div class="landing-page">
-  <div class="landing-page__pictures" data-aos="fade-right" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-left.webp" alt="photo visage ayant utilisé le masque de beauté envame"></div>
+  <div class="landing-page__pictures" data-aos="fade-right" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-left.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
   <div class="landing-page__center">
     <video class="landing-page__clip" src="./assets/videos/envame-add.mp4"  data-aos="zoom-in" data-aos-delay="300" data-aos-duration="750" autoplay muted controls></video>
     <p class="landing-page__advertising">Tranformez votre peau en <span class="landing-page__advertising--highlight">deux semaines !</span></p>
-    <div class="landing-page__btn buyModal">Acheter</div>
+    <div><a  class="landing-page__btn" href="/check-out">Acheter</a></div>
     <div class="landing-page__transitionBtn"></div>
   </div>
-  <div class="landing-page__pictures" data-aos="fade-left" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-right.webp" alt="photo visage ayant utilisé le masque de beauté envame"></div>
+  <div class="landing-page__pictures" data-aos="fade-left" data-aos-duration="750"><img class="landing-page__pictures--left" src="./assets/pictures/landing-page-bg-right.png" alt="photo visage ayant utilisé le masque de beauté envame"></div>
 </div>
 <div class="landing-page__space-creator"></div>
 
@@ -28,7 +35,7 @@
   <div class="title-bg-pink">
     <h2 class="title-white">Masque SPA 2.0</h2>
   </div>
-  <video data-aos="zoom-in" data-aos-easing="ease-in-out" class="mask-presentation__clip" src="./assets/videos/Visage-3D.mp4" poster="./assets/pictures/visage-3D-background.webp" preload="none" controls></video>
+  <video data-aos="zoom-in" data-aos-easing="ease-in-out" class="mask-presentation__clip" src="./assets/videos/Visage-3D.mp4" poster="./assets/pictures/visage-3D-background.png" preload="none" controls></video>
   <p class="mask-presentation__text">Le traitement LED ENVAME basé sur la PHOTOMODULATION est un traitement anti-âge ULTRA PERFORMANT utilisé depuis plusieurs années par la NASA pour réparer la peau fragilisée des astronautes. Cette performance est désormais <span class="mask-presentation__text--highlight" id="3-effects">accessible à tous</span>. <br>
   Avoir une peau parfaite n’est plus un rêve. </p>
 </section>
@@ -40,7 +47,7 @@
     <h2 class="title-pink">Un masque, trois actions</h2>
   </div>
   <div class="red-light">
-    <img class="red-light__picture" loading="lazy" src="./assets/pictures/couleur-rouge.webp" alt="Masque lumière rouge porté par un modèle">
+    <img class="red-light__picture" loading="lazy" src="./assets/pictures/couleur-rouge.jpg" alt="Masque lumière rouge porté par un modèle">
     <div class="red-light__coment" data-aos="fade-up">
       <h3 class="red-light__color">Lumière Rouge <br><span class="red-light__color--length">630-635nm</span></h3>
       <h2 class="red-light__title">Élimine Rides & Ridules:</h2>
@@ -55,10 +62,10 @@
       <p class="orange-light__text">
         La lumière orange traite les zones d’hyper pigmentation en réduisant la production excessive de mélanine. Elle agit aussi contre les effets négatifs liés à une surexposition au soleil comme les rougeurs,  la couperose et les masques de grossesse. Le tout en ayant une action réparatrice sur les peaux abîmées par les produits blanchissants.</p>
     </div>
-    <img class="orange-light__picture" loading="lazy" src="./assets/pictures/couleur-orange.webp" alt="Masque lumière orange porté par un modèle">
+    <img class="orange-light__picture" loading="lazy" src="./assets/pictures/couleur-orange.jpg" alt="Masque lumière orange porté par un modèle">
   </div>
   <div class="blue-light">
-    <img class="blue-light__picture" loading="lazy" src="./assets/pictures/couleur-bleu.webp" alt="Masque lumière bleu porté par un modèle">
+    <img class="blue-light__picture" loading="lazy" src="./assets/pictures/couleur-bleu.jpg" alt="Masque lumière bleu porté par un modèle">
     <div class="blue-light__coment" data-aos="fade-up">
       <h3 class="blue-light__color">Lumière Bleue<br><span class="blue-light__color--length">465-470nm</span></h3>
       <h2 class="blue-light__title">Traitement de l’acné:</h2>
@@ -74,7 +81,7 @@
     <h2 class="title-pink">Une efficacité professionnelle</h2>
   </div>
     <div class="light-effect__bg">
-    <video data-aos="zoom-in" data-aos-easing="ease-in-out" class="light-effect__clip" src="./assets/videos/Peau-3D.mp4" poster="./assets/pictures/peau-3D-background.webp" preload="none" controls></video>
+    <video data-aos="zoom-in" data-aos-easing="ease-in-out" class="light-effect__clip" src="./assets/videos/Peau-3D.mp4" poster="./assets/pictures/peau-3D-background.png" preload="none" controls></video>
     </div>
     <p class="light-effect__text"> Le masque de beauté ENVAME vous illumine de lumière qui pénètre la peau <span class="light-effect__text--highlight">plus en profondeur</span> que n’importe quelle autre crème en agissant directement sur votre derme.</p>
 </section>
@@ -82,7 +89,7 @@
 <!-- Buying Add -->
 <div class="buying-add">
   <p class="buying-add__text">Vous aussi profitez d'une efficacité professionnelle à la maison dès maintenant en commandant votre <span class="nobreak">masque !</span></p>
-  <div class="buying-add__Btn buyModal" >Acheter</div>
+  <div><a class="buying-add__Btn" href="/check-out">Acheter</a></div>
 </div>
 
 <!-- User manual -->
@@ -92,19 +99,19 @@
   </div>
   <div class="user-manual__steps">  
     <div class="step">
-      <img data-aos="flip-left" class="step__picture" src="./assets/pictures/mode-d-emploi-1.webp" alt="première étape imagé">
+      <img data-aos="flip-left" class="step__picture" src="./assets/pictures/mode-d-emploi-1.png" alt="première étape imagé">
       <p class="step__text">Lavez et séchez votre visage</p>
     </div>
     <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1300" class="step__picture" src="./assets/pictures/mode-d-emploi-2.webp" alt="deuxième étape imagé">
+      <img data-aos="flip-left" data-aos-duration="1300" class="step__picture" src="./assets/pictures/mode-d-emploi-2.png" alt="deuxième étape imagé">
       <p class="step__text">Connectez le masque et choisissez votre soin</p>
     </div>
     <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1600" class="step__picture" src="./assets/pictures/mode-d-emploi-3.webp" alt="troisième étape imagé">
+      <img data-aos="flip-left" data-aos-duration="1600" class="step__picture" src="./assets/pictures/mode-d-emploi-3.png" alt="troisième étape imagé">
       <p class="step__text">Détendez-vous pendant 15 minutes</p>
     </div>
     <div class="step">
-      <img data-aos="flip-left" data-aos-duration="1900" class="step__picture" src="./assets/pictures/mode-d-emploi-4.webp" alt="dernière étape imagé">
+      <img data-aos="flip-left" data-aos-duration="1900" class="step__picture" src="./assets/pictures/mode-d-emploi-4.png" alt="dernière étape imagé">
       <p class="step__text">Profitez du résultat</p>
   </div>
   </div>
@@ -138,7 +145,7 @@
       <p class="selling-info__current-price">Pour seulement: 179€</p>
       <!-- <p class="selling-info__old-price">Prix d'origine: <span class="selling-info__old-price--highlight">189€</span></p>  -->
     </div>
-    <div class="selling-info__Btn buyModal" id="contact">Acheter</div>
+    <div><a class="selling-info__Btn" id="contact" href="/check-out">Acheter</a></div>
   </div>
 </div>
 
@@ -165,18 +172,8 @@
   </div>
 </form>
 
-<!-- buying modal -->
-<div class="modal__bg">
-  <div class="modal">
-    <span class="modal__close">X</span>
-    <h3 class="modal__title">Payement en ligne bientôt disponible</h3>
-    <p class="modal__text">En attendant l'ajout de cette fonctionnalité vous pouvez d'ores et déjà commander votre masque Envame en nous contactant via email à :</p>
-    <p class="modal__text--highlight">contact@envame.com</p>
-  </div>
-</div>
-
 <!-- Newsletter Modal -->
-<div class="modal-newsletter__bg ">
+<div class="modal-newsletter__bg">
   <div class="modal-newsletter">
     <span class="modal-newsletter__close">X</span>
     <h3 class="modal-newsletter__title">Inscription réussi</h3>

@@ -4,8 +4,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const { body, validationResult } = require('express-validator');
 
-
-// Loading config env variablesnpm
+ //Loading config env variablesnpm
 dotenv.config({ path: './config/config.env' });
 
 // Starting the server
@@ -15,6 +14,7 @@ const app = express();
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect( process.env.DB_CONNECT,
   { useNewUrlParser: true })
+
 
 // Enabling static files
 app.use(express.static('public'));
@@ -38,7 +38,6 @@ app.listen(
 );
 
 // Setting Routes
-
 // Homepage
 const homepagePath = require('./routes/homepage.js');
 app.use('/', homepagePath);
@@ -46,10 +45,6 @@ app.use('/', homepagePath);
 // Contact
 const contactPath = require('./routes/contact.js');
 app.use('/contact', contactPath);
-
-// Authentification
-const userAuthPath = require('./routes/user/auth.js');
-app.use('/user/auth', userAuthPath);
 
 // CGV
 const cgvPath = require('./routes/cgv.js');
@@ -62,3 +57,7 @@ app.use('/privacy-policy', privacyPolPath);
 // further-information
 const infosPath = require('./routes/information.js');
 app.use('/information', infosPath);
+
+// paiement 
+const checkOutPath = require('./routes/check-out.js')
+app.use('/check-out', checkOutPath)

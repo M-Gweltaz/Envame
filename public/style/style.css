@@ -428,6 +428,7 @@
     cursor: pointer;
     font-size: 1.5rem;
     font-weight: bold;
+    text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     margin: 3vh;
@@ -472,7 +473,7 @@
   content: '';
   position: absolute;
   top: 0;
-  background: url(../assets/pictures/model-bg.webp) center no-repeat;
+  background: url(../assets/pictures/model-bg.jpg) center no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -1061,6 +1062,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 0.1rem;
   margin: 3vh 3vh 6vh 3vh;
   padding: 1vh 2vh;
@@ -1246,7 +1248,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url(../assets/pictures/selling-spot-background.webp) no-repeat center center;
+  background: url(../assets/pictures/selling-spot-background.png) no-repeat center center;
   background-size: cover;
   opacity: 0.4;
   z-index: -1;
@@ -1385,6 +1387,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 0.1rem;
   margin: 5vh;
 }
@@ -2495,113 +2498,6 @@
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
   background-color: #f00800;
-}
-
-.modal {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 40vw;
-  background-color: #fff;
-  color: #000;
-  -webkit-box-shadow: 0 0 0.3125rem -0.125rem;
-          box-shadow: 0 0 0.3125rem -0.125rem;
-  border-radius: 1.5625rem;
-  -webkit-transform: translateY(pixelToRem);
-          transform: translateY(pixelToRem);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  z-index: 3;
-}
-
-.modal--active {
-  -webkit-transform: translate(0%, 0%);
-          transform: translate(0%, 0%);
-}
-
-@media screen and (max-width: 1000px) {
-  .modal {
-    width: 60vw;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .modal {
-    width: 80vw;
-  }
-}
-
-.modal__bg {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: visibility 0s, opacity 0.3s;
-  transition: visibility 0s, opacity 0.3s;
-  z-index: 2;
-}
-
-.modal__bg--active {
-  visibility: visible;
-  opacity: 1;
-}
-
-.modal__close {
-  position: absolute;
-  cursor: pointer;
-  color: #fff;
-  top: 0.625rem;
-  right: 0.625rem;
-  font-weight: bold;
-}
-
-.modal__title {
-  background-color: #3898ef;
-  color: #fff;
-  width: 100%;
-  padding: 5vh 2vh;
-  text-align: center;
-  border-radius: 1.375rem;
-}
-
-.modal__text {
-  padding: 5vh 2vh;
-}
-
-.modal__text--highlight {
-  padding: 0vh 2vh 2vh 5vh;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #3898ef;
-  word-break: break-all;
 }
 
 .modal-newsletter {
