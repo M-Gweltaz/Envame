@@ -1614,6 +1614,190 @@ $breakpoints: (
   }
 }
 
+// check-out
+.check-out {
+  @include flexbox(space-around, center);
+  max-width: 90vw;
+  padding-bottom: 5vh;
+  margin: auto;
+
+  @include smartphone-only {
+    flex-direction: column;
+  }
+
+  &__picture {
+    grid-column: 1/2;
+    max-width: 20vw;
+    border-radius: pixelToRem(25);
+    box-shadow: 0 0 pixelToRem(10) pixelToRem(-2) map-get($color-palette, black);
+
+    @include tablet-only {
+      max-width: 33vw;
+    }
+  }
+
+  &__description {
+    min-height: pixelToRem(250);
+    grid-column: 2/3;
+    @include flexbox(center, start, column);
+
+    @include smartphone-only {
+      align-items: center;
+    }
+  }
+
+  &__title {
+    font-size: map-get($font-size, buy-Btn);
+    padding: pixelToRem(20) 0;
+  }
+
+  &__price {
+    font-size: map-get($font-size, highlight);
+    padding: pixelToRem(20) 0 pixelToRem(5) 0;
+
+    &--amount {
+      font-size: map-get($font-size, highlight);
+    }
+
+    &--sale {
+      font-size: map-get($font-size, small);
+      text-align: center;
+      font-style: italic;
+    }
+  }
+
+  &__params {
+    font-size: map-get($font-size, highlight);
+    padding: pixelToRem(20) 0;
+
+    @include laptop-only {
+      @include flexbox(center, center, column);
+    }
+
+    &--quantity {
+      width: pixelToRem(50);
+      background-color: lighten(map-get($color-palette, brand), 75%);
+      border: solid pixelToRem(2) lighten(map-get($color-palette, brand), 50%);
+      border-radius: pixelToRem(50);
+      padding-left: pixelToRem(15);
+      margin-left: pixelToRem(10);
+
+      @include laptop-only {
+        margin: pixelToRem(5);
+      }
+    }
+
+    &--country {
+      background-color: lighten(map-get($color-palette, brand), 75%);
+      border: solid pixelToRem(2) lighten(map-get($color-palette, brand), 50%);
+      border-radius: pixelToRem(50);
+      padding-left: pixelToRem(15);
+      margin-left: pixelToRem(10);
+
+      @include laptop-only {
+        margin: pixelToRem(5);
+      }
+    }
+  }
+
+  &__total {
+    font-size: map-get($font-size, highlight);
+    padding: pixelToRem(20) 0;
+
+    &--amount {
+      font-size: map-get($font-size, buy-Btn);
+      font-weight: bold;
+    }
+  }
+
+  &__btn {
+    font-size: map-get($font-size, buy-Btn);
+    cursor: pointer;
+    padding: 1vw 2vw;
+    border: 0.2rem solid map-get($color-palette, primary);
+    background-color: map-get($color-palette, primary);
+    color: map-get($color-palette, neutral);
+    box-shadow: 0 0 pixelToRem(5) pixelToRem(-2) map-get($color-palette, black);
+    margin: pixelToRem(20) 0;
+
+    &:hover {
+      background-color: map-get($color-palette, neutral);
+      color: map-get($color-palette, primary);
+      transition: all 0.3s ease;
+    }
+
+    &:active,
+    &:focus {
+      // background-color: map-get($color-palette, neutral);
+      border-color: darken(map-get($color-palette, primary), 15%);
+      color: darken(map-get($color-palette, primary), 15%);
+      background-color: map-get($color-palette, neutral);
+    }
+  }
+}
+
+// check-out success
+.check-out-success {
+  @include flexbox(center, center, column);
+  margin-bottom: 5vh;
+
+  &__text {
+    padding: pixelToRem(5) pixelToRem(20);
+    max-width: 80vw;
+
+    @include smartphone-only {
+      max-width: 90vw;
+    }
+  }
+
+  &__link {
+    @include links(black, primary);
+    font-weight: bold;
+    font-size: map-get($font-size, highlight);
+    word-wrap: break-word;
+  }
+}
+
+.check-out-recap {
+  @include flexbox(center, center, column);
+  padding: pixelToRem(20);
+
+  &__title {
+    font-size: map-get($font-size, highlight);
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 2vh;
+    position: relative;
+
+    &--highlight {
+      font-weight: bold;
+    }
+
+    &:before {
+      content: '*';
+      position: absolute;
+      top: pixelToRem(9);
+      left: pixelToRem(-10);
+      font-size: map-get($font-size, title);
+      color: map-get($color-palette, primary);
+    }
+  }
+
+  &__text {
+    padding: pixelToRem(10);
+
+    &--highlight {
+      font-weight: bold;
+    }
+  }
+}
+
+#check-out-command {
+  word-break: break-all;
+}
+
 // contact modal
 .contact-form-modal {
   position: fixed;
@@ -1707,7 +1891,7 @@ $breakpoints: (
 
     &--highlight {
       font-weight: bold;
-      font-size: map-get($font-size, buy-hightlight);
+      font-size: map-get($font-size, highlight);
       color: map-get($color-palette, primary);
     }
   }

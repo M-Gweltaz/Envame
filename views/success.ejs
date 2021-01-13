@@ -1,19 +1,34 @@
 <!-- Header -->
 <%- include('layouts/header'); -%>
-  <title>Envame - Commande réussi</title>
+<title>Envame - Merci pour votre achat</title>
 </head>
 
 <!-- Navbar -->
 <%- include('layouts/navbar'); -%>
 
 <!-- paiement success -->
-<section>
-  <p>
-    We appreciate your business! If you have any questions, please email
-    <a href="mailto:contact@envame.com">contact@envame.com</a>.
-  </p>
+<section class="check-out-success navspacing">
+  <div class="title-bg-white">
+    <h1 class="title-pink">Nous vous remercions pour votre confiance !</h1>
+  </div>
+  <div class="check-out-recap">
+    <p class="check-out-recap__title">Votre récapitulatif de commande: 
+      <ul>
+        <li class="check-out-recap__list"><span class="check-out-recap__list--highlight">Commande n°: </span><span id="check-out-command"></span></li>
+        <li class="check-out-recap__list"><span class="check-out-recap__list--highlight">Tarif: </span><span id="check-out-amount"></span></li>
+        <li class="check-out-recap__list"><span class="check-out-recap__list--highlight">Produit: </span>Masque de beauté Envame SPA2.0 </li>
+      </ul>
+    </p>
+    <p class="check-out-recap__text">Votre livraison s'effectuera dans les <span class="check-out-recap__text--highlight" id="check-out-shipping"></span> ouvrés.</p>
+  </div>
+  <p class="check-out-success__text">Vous retrouverez toutes ces informations dans un récapitulatif de commande disponible dès à présent sur votre adresse e-mail.</p>
+  <p class="check-out-success__text">Nous restons disponible pour répondre à toutes vos questions directement via notre page <a  class="check-out-success__link" href="/contact">contact</a> ou directement par email: <a class="check-out-success__link" href="mailto:contact@envame.com">contact@envame.com</a>.</p>
+  <div class="test"></div>
 </section>
 
 <!-- Footer -->
 <%- include('layouts/footer'); -%>
+
+<script src="/frontjs/success.js"></script>
+
 </body>

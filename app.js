@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const { body, validationResult } = require('express-validator');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
  //Loading config env variablesnpm
 dotenv.config({ path: './config/config.env' });
@@ -58,6 +59,6 @@ app.use('/privacy-policy', privacyPolPath);
 const infosPath = require('./routes/information.js');
 app.use('/information', infosPath);
 
-// paiement 
+// Payement 
 const checkOutPath = require('./routes/check-out.js')
 app.use('/check-out', checkOutPath)
