@@ -38,6 +38,24 @@ app.listen(
   )
 );
 
+// Getting product price from Stripe
+app.use(async function(req, res, next) {
+try {
+  const price = await stripe.prices.retrieve(
+    process.env.STRIPE_PRICE_KEY,
+    { api_key: process.env.STRIPE_SECRET_KEY }
+  );
+  const currentPrice = price.unit_amount /100 + ' €'
+  req.currentPrice = currentPrice
+} catch (error) {
+  console.log(error)
+  req.currentPrice = 179 +' €'
+}
+next();
+});
+
+
+
 // Setting Routes
 // Homepage
 const homepagePath = require('./routes/homepage.js');

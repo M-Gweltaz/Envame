@@ -7,7 +7,7 @@ const { body, validationResult } = require('express-validator');
 
 // Homepage ROOT
 router.get('/', (req, res) => {
-  res.render('homepage')
+  res.render('homepage', {currentPrice: req.currentPrice})
 });
 
 // Newsletter PATH
@@ -319,7 +319,7 @@ router.post('/newsletter', [
                         Votre adresse e-mail ne sera jamais partagée et uniquement utilisée par la société Envame.
                         Si vous le désirez, vous pouvez vous désabonner en tout instant en cliquant sur le lien désabonnement ci-dessous.
                         <br />
-                        <br /> <strong>&copy; 2020 Envame. Tout droit réservé</strong>
+                        <br /> <strong>&copy; 2021 Envame. Tout droit réservé</strong>
                         <br />
                         <br />
                         <a href="https://www.envame.com/newsletter_unsubscribe"

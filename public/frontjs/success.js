@@ -26,6 +26,8 @@ if (id) {
         case 167:
           shippingDuration = '7 jours'
           break
+
+        default: shippingDuration = '7 jours'
       }
 
       // Adding session data in the success page

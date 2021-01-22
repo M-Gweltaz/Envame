@@ -23,16 +23,16 @@
     />
     <div class="check-out__description description">
       <h3 class="check-out__title">Envame SPA2.0</h3>
-      <p class="check-out__price">Prix unitaire: <span class="check-out__price--amount"><%= product.price%></span> €*</p>  
+      <p class="check-out__price">Prix unitaire: <span class="check-out__price--amount"><%= currentPrice %></span>*</p>  
       <p class="check-out__price--sale">*Tarif standard hors promotion et code cadeau</p>
       <form class="check-out__params">
         <label for="quantity">Quantité :</label>
         <input class="check-out__params--quantity" type="number" name="quantity" id="quantity" min="1" max="10" value="1" required>
         <label for="livraison">Livraison :</label>
         <select class="check-out__params--country" name="country" id="country">
-          <option value="france">France métropolitaine - 9.99€</option>
-          <option value="europe">Europe - 15.99€</option>
-          <option value="international">International - 30€</option>
+          <option value="france">France métropolitaine - 9.99 €</option>
+          <option value="europe">Europe - 15.99 €</option>
+          <option value="international">International - 30 €</option>
         </select>
       </form>
       <p class="check-out__total">Sous-total : <span class="check-out__total--amount">188.99 €</span> </p>

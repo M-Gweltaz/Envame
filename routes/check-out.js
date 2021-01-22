@@ -1,17 +1,10 @@
 const express = require('express');
-const { set } = require('mongoose');
+const nodemailer = require('nodemailer');
 const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-
-const product = {
-  price: 179,
-  quantity: 1,
-  total: this.price * this.quantity
-}
-
 router.get('/', (req, res) => {
-  res.render('check-out', {product: product})
+  res.render('check-out', {currentPrice: req.currentPrice})
 })
 
 router.get('/checkout-session', async (req, res) => {
@@ -144,11 +137,57 @@ router.post('/create-checkout-session', async (req, res) => {
     ],
     mode: 'payment',
     allow_promotion_codes: true,
-    success_url: `http://localhost:5000/check-out/success?id={CHECKOUT_SESSION_ID}`,
+    success_url: `https://envame.com/check-out/success?id={CHECKOUT_SESSION_ID}`,
     cancel_url: `https://envame.com/`,
   });
   res.json({ id: session.id });
 })
+
+router.post('/webhook', (req, res) => {
+  let event = req.body
+
+  // Handle the event
+  switch (event.type) {
+    case 'checkout.session.completed':
+      let buyingDate = new Date()
+      
+      // mail input
+      const output = `<h1>✨ Vous avez reçu une nouvelle commande réalisé via Envame.com ✨</h1>
+      <h3>Retrouvez tout le détail directement sur votre compte Stripe</h3>
+      <h2>Commande passé le : ${buyingDate.getDate()} / ${buyingDate.getMonth() + 1} / ${buyingDate.getFullYear()}`
+
+      // create reusable transporter object using the default SMTP transport
+      let transporter = nodemailer.createTransport({
+        host: 'node9-fr.n0c.com',
+        port: 465,
+        secure: true, // true for 465, false for other ports (587)
+        auth: {
+          user: process.env.EMAIL_ID,
+          pass: process.env.EMAIL_PASSWORD, 
+        },
+      });
+
+      // send mail with defined transport object
+      let mailOption = {
+        from: '"Envame contact form" <contact@envame.com>',
+        to: process.env.EMAIL_CONTACT_RECEIVER, 
+        subject: 'Nouvelle commande',
+        text: 'Hello world?', 
+        html: output, 
+      };
+
+      // sending welcome newsletter email
+      transporter.sendMail(mailOption);
+      break;
+
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  // Return a 200 response to acknowledge receipt of the event
+  res.json({received: true});
+});
 
 // payement success
 router.get('/success', (req, res) => {
